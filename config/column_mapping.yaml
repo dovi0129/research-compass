@@ -1,0 +1,39 @@
+# 원본 컬럼 -> 내부 스키마 매핑.
+# 감사 전에는 '추정'이며, audit 실행 후 실제 헤더로 확정한다.
+# 원본에 없는 필드는 null 로 두고 억지로 채우지 않는다.
+
+schema_version: "1.0"
+status: proposed        # proposed | confirmed  (감사 후 confirmed 로 변경)
+
+D1:
+  dataset_id: "3049029"
+  fields:
+    title_raw: 과제명
+    selection_year: 선정년도
+    business_year: 사업년도
+    institution: 주관기관명
+    program_path:
+      - 대사업명
+      - 중사업명
+      - 소사업명
+      - 세부사업명
+    official_project_id: null      # 원본에 과제 고유번호 없음 (등록 페이지 기준)
+    field_code: null               # 원본에 연구분야 코드 없음 -> D2 와의 연결키 부재
+    abstract: null                 # 원본에 초록 없음
+  excluded_from_output:            # 임베딩/화면/내보내기 금지
+    - 연구책임자명
+    - 연구자번호
+  security_flag: 보안과제여부
+
+D2:
+  dataset_id: "15120687"
+  fields:
+    field_name: 과학기술표준명
+    field_code: 중심분야코드
+    selection_count: "2025년 선정횟수"
+    count_column_raw: "2025년 선정횟수"
+    # 구현상 기준연도는 컬럼명을 따른다. period_status 는 conflicting 유지.
+    period_label: "2025"           # 근거: 원본 CSV 컬럼명 '2025년 선정횟수'
+    period_conflict_note: "포털 설명문은 '2023년 연구분야별 선정과제 현황' 으로 표기됨"
+    count_unit: null               # 원문에 집계 단위 설명 없음 -> 미확정
+    classification_level: null     # 중심분야코드의 분류 수준 미확인

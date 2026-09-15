@@ -1,0 +1,4 @@
+{"query_id": "fail01", "query": "", "expect": "INVALID_QUERY"}
+{"query_id": "fail02", "query": "???", "expect": "INVALID_QUERY_or_no_relevant"}
+{"query_id": "fail03", "query": "asdfghjkl qwerty", "expect": "no_relevant"}
+{"query_id": "fail04", "query": "가", "expect": "INVALID_QUERY"}

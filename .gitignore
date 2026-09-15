@@ -1,0 +1,39 @@
+# ── 원본·정제 데이터 (공개 저장소에 올리지 않는다) ──────────────────────────
+# D1 원본에는 개인식별 컬럼(연구책임자명·연구자번호)이 들어 있다. 절대 커밋하지 않는다.
+# 받는 방법은 README "2. 원본 데이터" 참조.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/
+
+# ── 빌드 산출물 (용량 · 재생성 가능) ────────────────────────────────────────
+# 임베딩 49MB. `python -m research_compass.cli build-index` 로 다시 만든다.
+artifacts/*.npy
+artifacts/*.faiss
+
+# ── 접속 정보·개인키 — 저장소에 절대 포함하지 않음 ──────────────────────────
+.streamlit/secrets.toml
+config/server.yaml
+npu_connect*
+id_container
+*.pem
+*_key
+
+# ── 환경 ────────────────────────────────────────────────────────────────────
+.venv/
+.venv-server/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# ── 기계별 기록·임시 파일 ───────────────────────────────────────────────────
+reports/environment_audit.md
+evaluation/_*
+.DS_Store
+Thumbs.db
+
+# ── 화면에서 내려받은 사용자 파일 (저장소에 두지 않는다) ────────────────────
+research_compass_memo*.md
+research_compass_workspace*.json

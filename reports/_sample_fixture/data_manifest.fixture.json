@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-09T05:54:02+00:00",
+  "snapshots": [
+    {
+      "key": "D1",
+      "dataset_id": "3049029",
+      "title": "한국연구재단_이알앤디_과제정보",
+      "source_url": "https://www.data.go.kr/data/3049029/fileData.do",
+      "file_name": "D1_fixture.csv",
+      "file_path": "/home/claude/research-compass/data/fixtures/D1_fixture.csv",
+      "bytes": 9595,
+      "sha256": "93b594de507d6efff7fa3eac10307b7a8c7781990187f11ff14fee2c8a0ad9f5",
+      "snapshot_id": "3049029-93b594de507d",
+      "acquired_at": "2026-09-09T05:54:02+00:00",
+      "encoding": "utf-8-sig",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "사업년도",
+        "선정년도",
+        "대사업명",
+        "중사업명",
+        "소사업명",
+        "세부사업명",
+        "과제명",
+        "연구책임자명",
+        "연구자번호",
+        "주관기관명",
+        "보안과제여부"
+      ],
+      "notes": []
+    },
+    {
+      "key": "D2",
+      "dataset_id": "15120687",
+      "title": "한국연구재단_선정과제 연구분야",
+      "source_url": "https://www.data.go.kr/data/15120687/fileData.do",
+      "file_name": "D2_fixture.csv",
+      "file_path": "/home/claude/research-compass/data/fixtures/D2_fixture.csv",
+      "bytes": 325,
+      "sha256": "706ee6e926d67f9d848c3f9aa970c59511be905ea92f50aae97a585515fe1edd",
+      "snapshot_id": "15120687-706ee6e926d6",
+      "acquired_at": "2026-09-09T05:54:02+00:00",
+      "encoding": "utf-8-sig",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "과학기술표준명",
+        "중심분야코드",
+        "2025년 선정횟수"
+      ],
+      "notes": []
+    }
+  ],
+  "row_counts": {
+    "D1": 61,
+    "D2": 12
+  }
+}

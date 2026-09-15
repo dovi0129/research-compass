@@ -1,0 +1,136 @@
+{
+  "generated_at": "2026-09-09T06:54:00+00:00",
+  "policy": {
+    "population_source": "K18",
+    "crosswalk_source": "K1",
+    "absent_code_semantics": "unobserved",
+    "withdrawn": "p1_crosswalk.md 의 unobserved 1,608 (2023 모집단 기반) — 철회"
+  },
+  "snapshots": {
+    "D2": {
+      "key": "D2",
+      "dataset_id": "15120687",
+      "title": "한국연구재단_선정과제 연구분야",
+      "source_url": "https://www.data.go.kr/data/15120687/fileData.do",
+      "file_name": "한국연구재단_선정과제 연구분야_20250825.csv",
+      "file_path": "/home/claude/research-compass/data/raw/한국연구재단_선정과제 연구분야_20250825.csv",
+      "bytes": 27570,
+      "sha256": "44a5fd8a20dc48d7280651d487a625f9a2632dc84dd4fad404b584a545112995",
+      "snapshot_id": "15120687-44a5fd8a20dc",
+      "acquired_at": "2026-09-09T06:54:00+00:00",
+      "encoding": "utf-8-sig",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "과학기술표준명",
+        "중심분야코드",
+        "2025년 선정횟수"
+      ],
+      "notes": []
+    },
+    "K18": {
+      "key": "K18",
+      "dataset_id": "15065876",
+      "title": "한국과학기술기획평가원(KISTEP)_과학기술표준분류정보",
+      "source_url": "https://www.data.go.kr/data/15065876/fileData.do",
+      "file_name": "한국과학기술기획평가원(KISTEP)_과학기술표준분류정보_20210923.csv",
+      "file_path": "/home/claude/research-compass/data/raw/한국과학기술기획평가원(KISTEP)_과학기술표준분류정보_20210923.csv",
+      "bytes": 982778,
+      "sha256": "c851c68370c248a9272b97059500cc2d2ef71aed26117177561d77b62ec711f5",
+      "snapshot_id": "15065876-c851c68370c2",
+      "acquired_at": "2026-09-09T06:54:00+00:00",
+      "encoding": "cp949",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "분류정보일련번호",
+        "분류구분코드",
+        "분류구분코드한글명",
+        "분류코드",
+        "분류코드한글명",
+        "분야코드",
+        "분야코드한글명",
+        "대분류코드",
+        "대분류코드한글명",
+        "중분류코드",
+        "중분류코드한글명",
+        "제목"
+      ],
+      "notes": []
+    },
+    "K1": {
+      "key": "K1",
+      "dataset_id": "15065871",
+      "title": "한국과학기술기획평가원(KISTEP)_과학기술표준분류",
+      "source_url": "https://www.data.go.kr/data/15065871/fileData.do",
+      "file_name": "한국과학기술기획평가원(KISTEP)_과학기술표준분류_20251231.csv",
+      "file_path": "/home/claude/research-compass/data/raw/한국과학기술기획평가원(KISTEP)_과학기술표준분류_20251231.csv",
+      "bytes": 150102,
+      "sha256": "b9b2fb688f7832e83422f535519f6e1ea665104426838b5d98567a2869241e4b",
+      "snapshot_id": "15065871-b9b2fb688f78",
+      "acquired_at": "2026-09-09T06:54:00+00:00",
+      "encoding": "cp949",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "대분류코드",
+        "대분류코드명",
+        "중분류코드",
+        "중분류코드명",
+        "소분류코드",
+        "소분류코드명"
+      ],
+      "notes": []
+    }
+  },
+  "reference_rows": 4522,
+  "verify": {
+    "version_label": "KISTEP 2018 국가과학기술표준분류체계 (연구분야 RCSARE)",
+    "d2_rows": 851,
+    "major_match": 851,
+    "major_rate": 1.0,
+    "mid_match": 851,
+    "mid_rate": 1.0,
+    "name_strict_match": 768,
+    "name_strict_rate": 0.902468,
+    "name_contained_match": 851,
+    "name_contained_rate": 1.0,
+    "code_name_consistent": 851,
+    "code_name_conflict": 0,
+    "unmatched_majors": [],
+    "unmatched_mids": [],
+    "unexplained_names": []
+  },
+  "population": {
+    "status": "blocked",
+    "reason": "2018 체계 참조자료(KISTEP 20210923)에 소분류 6자리 코드 컬럼이 없어 코드 수준 차집합을 확정할 수 없음",
+    "absent_code_semantics": "unobserved",
+    "forbid_zero_label": true,
+    "observed_codes": 851,
+    "observed_mid_codes": 209,
+    "reference_minor_names_in_scope": 2876,
+    "name_level_estimate_only": 2025,
+    "note": "위 추정치는 명칭 기준이며 확정 결과가 아니다. 소분류 코드가 포함된 2018 체계 코드표를 확보해야 확정할 수 있다."
+  },
+  "v2023_reference": {
+    "rows": 851,
+    "minor_match": 109,
+    "minor_rate": 0.128085,
+    "missing_majors": [
+      "HA",
+      "HB",
+      "HC",
+      "HD",
+      "HE",
+      "SA",
+      "SB",
+      "SC",
+      "SD",
+      "SE",
+      "SF",
+      "SG",
+      "SH",
+      "SI"
+    ]
+  }
+}

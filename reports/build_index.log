@@ -1,0 +1,215 @@
+﻿===== run_build 시작 2026-09-09T16:37:57 =====
+폴더: C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더
+python: C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\.venv\Scripts\python.exe
+
+===== 1. 캐시 정리 =====
+HF 캐시: C:\Users\<사용자>\.cache\huggingface
+삭제(미완료 다운로드): 993b2248881724788dcab8c644a91dfd63584b6e5604ff2037cb5541e1e38e7e.fbed4158.incomplete  240 MB
+가중치 파일 유지: 2166 MB
+
+===== 2. doctor  (16:37:58) =====
+> "C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\.venv\Scripts\python.exe" -m research_compass.cli doctor --quick
+Research Compass 0.1.0
+Python           : 3.12.10 (Windows-11-10.0.26200-SP0)
+저장소 루트      : C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더
+
+패키지:
+  pandas                   … 3.0.5  (0.0s)
+  numpy                    … 2.5.3  (0.0s)
+  yaml                     … 6.0.3  (0.0s)
+  (--quick: sentence_transformers, faiss, sklearn, streamlit 확인 생략)
+
+모델 캐시:
+  위치: C:\Users\<사용자>\.cache\huggingface\hub\models--BAAI--bge-m3
+  크기: 4.56 GB
+  model.safetensors      없음
+  pytorch_model.bin      있음
+
+원본 파일:
+  D1   [primary]  한국연구재단_이알앤디_과제정보_20250825.csv  (2,234,960 bytes)
+  D2   [primary]  한국연구재단_선정과제 연구분야_20250825.csv  (27,570 bytes)
+  K18  [auxiliary_reference]  한국과학기술기획평가원(KISTEP)_과학기술표준분류정보_20210923.csv  (982,778 bytes)
+  K1   [crosswalk_only]  한국과학기술기획평가원(KISTEP)_과학기술표준분류_20251231.csv  (150,102 bytes)
+
+준비 완료
+(종료 코드 0)
+
+===== 3. prepare  (16:37:58) =====
+> "C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\.venv\Scripts\python.exe" -m research_compass.cli prepare
+[정제] ProjectRecord 11,783건  (제외 5건)
+  제외 사유: {'보안과제여부=Y (보안과제 기본 제외)': np.int64(5)}
+[정제] FieldRecord   851건
+  짧은 제목(10자 미만) 표시: 523건
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\data\processed\projects.csv
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\data\processed\fields.csv
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\data\processed\projects_excluded.csv
+(종료 코드 0)
+
+build-index 는 CPU 에서 10~30분 걸릴 수 있습니다. 진행바는 10초마다 갱신됩니다.
+
+===== 4. build-index  (16:37:59) =====
+> "C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\.venv\Scripts\python.exe" -m research_compass.cli build-index
+[모델] BAAI/bge-m3 — 가중치 포맷: pytorch_model.bin (캐시 재사용)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 11133.56it/s]
+C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\src\research_compass\embedding.py:50: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dim = self.model.get_sentence_embedding_dimension()
+
+Batches:   0%|          | 0/1473 [00:00<?, ?it/s]
+Batches:   0%|          | 4/1473 [00:13<1:19:50,  3.26s/it]
+Batches:   0%|          | 4/1473 [00:30<1:19:50,  3.26s/it]
+Batches:   1%|          | 8/1473 [00:33<1:47:11,  4.39s/it]
+Batches:   1%|          | 12/1473 [00:44<1:26:45,  3.56s/it]
+Batches:   1%|▏         | 19/1473 [00:54<58:50,  2.43s/it]  
+Batches:   2%|▏         | 28/1473 [01:04<43:38,  1.81s/it]
+Batches:   3%|▎         | 37/1473 [01:17<39:54,  1.67s/it]
+Batches:   3%|▎         | 47/1473 [01:28<34:15,  1.44s/it]
+Batches:   3%|▎         | 47/1473 [01:40<34:15,  1.44s/it]
+Batches:   4%|▍         | 57/1473 [01:40<32:00,  1.36s/it]
+Batches:   5%|▍         | 67/1473 [01:51<29:25,  1.26s/it]
+Batches:   5%|▌         | 77/1473 [02:02<28:13,  1.21s/it]
+Batches:   6%|▌         | 86/1473 [02:17<30:38,  1.33s/it]
+Batches:   7%|▋         | 96/1473 [02:27<28:38,  1.25s/it]
+Batches:   7%|▋         | 107/1473 [02:38<26:10,  1.15s/it]
+Batches:   8%|▊         | 118/1473 [02:48<24:14,  1.07s/it]
+Batches:   9%|▉         | 129/1473 [02:58<22:54,  1.02s/it]
+Batches:  10%|▉         | 140/1473 [03:09<22:37,  1.02s/it]
+Batches:  10%|█         | 151/1473 [03:20<21:57,  1.00it/s]
+Batches:  10%|█         | 151/1473 [03:30<21:57,  1.00it/s]
+Batches:  11%|█         | 164/1473 [03:30<20:30,  1.06it/s]
+Batches:  11%|█         | 164/1473 [03:40<20:30,  1.06it/s]
+Batches:  12%|█▏        | 177/1473 [03:41<19:22,  1.12it/s]
+Batches:  13%|█▎        | 190/1473 [03:54<19:48,  1.08it/s]
+Batches:  14%|█▎        | 201/1473 [04:06<20:29,  1.03it/s]
+Batches:  14%|█▍        | 212/1473 [04:16<20:06,  1.04it/s]
+Batches:  15%|█▌        | 223/1473 [04:26<19:47,  1.05it/s]
+Batches:  16%|█▌        | 235/1473 [04:37<19:16,  1.07it/s]
+Batches:  17%|█▋        | 247/1473 [04:47<18:41,  1.09it/s]
+Batches:  18%|█▊        | 259/1473 [04:58<18:26,  1.10it/s]
+Batches:  18%|█▊        | 272/1473 [05:09<17:30,  1.14it/s]
+Batches:  19%|█▉        | 286/1473 [05:19<16:27,  1.20it/s]
+Batches:  20%|██        | 301/1473 [05:30<15:27,  1.26it/s]
+Batches:  20%|██        | 301/1473 [05:40<15:27,  1.26it/s]
+Batches:  21%|██▏       | 316/1473 [05:41<14:53,  1.29it/s]
+Batches:  22%|██▏       | 330/1473 [05:52<14:55,  1.28it/s]
+Batches:  23%|██▎       | 343/1473 [06:02<14:41,  1.28it/s]
+Batches:  24%|██▍       | 356/1473 [06:13<14:47,  1.26it/s]
+Batches:  25%|██▌       | 369/1473 [06:23<14:32,  1.27it/s]
+Batches:  26%|██▌       | 383/1473 [06:33<14:04,  1.29it/s]
+Batches:  27%|██▋       | 397/1473 [06:44<13:59,  1.28it/s]
+Batches:  28%|██▊       | 412/1473 [06:55<13:21,  1.32it/s]
+Batches:  29%|██▉       | 427/1473 [07:06<13:14,  1.32it/s]
+Batches:  30%|███       | 442/1473 [07:17<12:43,  1.35it/s]
+Batches:  31%|███       | 457/1473 [07:29<12:50,  1.32it/s]
+Batches:  32%|███▏      | 470/1473 [07:40<13:00,  1.29it/s]
+Batches:  32%|███▏      | 470/1473 [07:50<13:00,  1.29it/s]
+Batches:  33%|███▎      | 485/1473 [07:50<12:23,  1.33it/s]
+Batches:  34%|███▍      | 500/1473 [08:00<11:50,  1.37it/s]
+Batches:  34%|███▍      | 500/1473 [08:11<11:50,  1.37it/s]
+Batches:  35%|███▍      | 514/1473 [08:11<11:44,  1.36it/s]
+Batches:  36%|███▌      | 528/1473 [08:21<11:36,  1.36it/s]
+Batches:  37%|███▋      | 542/1473 [08:31<11:22,  1.36it/s]
+Batches:  38%|███▊      | 558/1473 [08:41<10:40,  1.43it/s]Error while downloading from https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors: The read operation timed out
+Trying to resume download...
+
+Batches:  39%|███▉      | 574/1473 [08:54<10:51,  1.38it/s]
+Batches:  40%|███▉      | 587/1473 [09:05<11:06,  1.33it/s]
+Batches:  41%|████      | 600/1473 [09:15<11:11,  1.30it/s]
+Batches:  42%|████▏     | 613/1473 [09:27<11:35,  1.24it/s]
+Batches:  43%|████▎     | 629/1473 [09:37<10:40,  1.32it/s]
+Batches:  44%|████▍     | 645/1473 [09:48<10:07,  1.36it/s]
+Batches:  45%|████▍     | 660/1473 [09:59<09:44,  1.39it/s]
+Batches:  46%|████▌     | 677/1473 [10:09<09:00,  1.47it/s]
+Batches:  47%|████▋     | 694/1473 [10:19<08:29,  1.53it/s]
+Batches:  47%|████▋     | 694/1473 [10:30<08:29,  1.53it/s]
+Batches:  48%|████▊     | 710/1473 [10:31<08:36,  1.48it/s]
+Batches:  48%|████▊     | 710/1473 [10:41<08:36,  1.48it/s]
+Batches:  49%|████▉     | 722/1473 [10:41<09:07,  1.37it/s]C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\.venv\Lib\site-packages\huggingface_hub\file_download.py:142: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\<사용자>\.cache\huggingface\hub\models--BAAI--bge-m3. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+
+Batches:  50%|████▉     | 736/1473 [10:52<08:59,  1.37it/s]
+Batches:  51%|█████     | 754/1473 [11:02<08:08,  1.47it/s]
+Batches:  52%|█████▏    | 772/1473 [11:13<07:42,  1.52it/s]
+Batches:  54%|█████▎    | 790/1473 [11:24<07:10,  1.59it/s]
+Batches:  55%|█████▍    | 808/1473 [11:34<06:45,  1.64it/s]
+Batches:  56%|█████▌    | 826/1473 [11:44<06:32,  1.65it/s]
+Batches:  57%|█████▋    | 845/1473 [11:55<06:06,  1.72it/s]
+Batches:  59%|█████▊    | 864/1473 [12:05<05:48,  1.75it/s]
+Batches:  60%|█████▉    | 883/1473 [12:15<05:29,  1.79it/s]
+Batches:  61%|██████▏   | 904/1473 [12:25<05:05,  1.86it/s]
+Batches:  63%|██████▎   | 925/1473 [12:36<04:51,  1.88it/s]
+Batches:  64%|██████▍   | 945/1473 [12:46<04:35,  1.92it/s]
+Batches:  66%|██████▌   | 965/1473 [12:57<04:24,  1.92it/s]
+Batches:  67%|██████▋   | 985/1473 [13:07<04:14,  1.92it/s]
+Batches:  68%|██████▊   | 1005/1473 [13:18<04:03,  1.92it/s]
+Batches:  70%|██████▉   | 1025/1473 [13:28<03:56,  1.90it/s]
+Batches:  71%|███████   | 1044/1473 [13:39<03:46,  1.89it/s]
+Batches:  72%|███████▏  | 1063/1473 [13:49<03:39,  1.87it/s]
+Batches:  73%|███████▎  | 1082/1473 [13:59<03:30,  1.86it/s]
+Batches:  75%|███████▍  | 1103/1473 [14:09<03:12,  1.92it/s]
+Batches:  76%|███████▋  | 1125/1473 [14:20<02:54,  1.99it/s]
+Batches:  76%|███████▋  | 1125/1473 [14:30<02:54,  1.99it/s]
+Batches:  78%|███████▊  | 1147/1473 [14:30<02:42,  2.00it/s]
+Batches:  79%|███████▉  | 1169/1473 [14:41<02:28,  2.04it/s]
+Batches:  79%|███████▉  | 1169/1473 [14:51<02:28,  2.04it/s]
+Batches:  81%|████████  | 1191/1473 [14:51<02:16,  2.07it/s]
+Batches:  82%|████████▏ | 1213/1473 [15:01<02:04,  2.09it/s]
+Batches:  84%|████████▍ | 1236/1473 [15:11<01:50,  2.15it/s]
+Batches:  85%|████████▌ | 1259/1473 [15:22<01:39,  2.16it/s]
+Batches:  87%|████████▋ | 1284/1473 [15:32<01:24,  2.24it/s]
+Batches:  89%|████████▉ | 1309/1473 [15:44<01:14,  2.20it/s]
+Batches:  90%|█████████ | 1332/1473 [15:54<01:03,  2.22it/s]
+Batches:  92%|█████████▏| 1357/1473 [16:04<00:50,  2.28it/s]
+Batches:  94%|█████████▍| 1385/1473 [16:15<00:36,  2.43it/s]
+Batches:  96%|█████████▌| 1415/1473 [16:25<00:22,  2.59it/s]
+Batches:  99%|█████████▉| 1457/1473 [16:35<00:05,  3.06it/s]
+Batches: 100%|██████████| 1473/1473 [16:37<00:00,  1.48it/s]
+
+Batches:   0%|          | 0/107 [00:00<?, ?it/s]
+Batches:  30%|██▉       | 32/107 [00:10<00:23,  3.16it/s]
+Batches:  73%|███████▎  | 78/107 [00:20<00:07,  3.97it/s]
+Batches: 100%|██████████| 107/107 [00:24<00:00,  4.34it/s]
+[인덱스] 과제 (11783, 1024)  분야 (851, 1024)  mode=local_live
+  벡터 검사(과제): {'rows': 11783, 'dim': 1024, 'dtype': 'float32', 'nan_rows': 0, 'zero_rows': 0, 'norm_min': 0.9999998211860657, 'norm_max': 1.0000001192092896, 'normalized': True}
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\artifacts\index_manifest.json
+(종료 코드 0)
+
+===== 5. 검색 확인  (16:55:23) =====
+> "C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\.venv\Scripts\python.exe" -m research_compass.cli search --query "산업 전력 데이터 이상탐지" --top-k 5
+[모델] BAAI/bge-m3 — 가중치 포맷: pytorch_model.bin (캐시 재사용)
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 23717.88it/s]
+[모델] 로딩 완료 (2s), device=cpu
+C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\src\research_compass\embedding.py:60: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dim = self.model.get_sentence_embedding_dimension()
+질의: 산업 전력 데이터 이상탐지
+
+── 의미 검색 (backend=faiss, FAISS-NumPy 최대 오차=2.38e-07)
+   1. 의미 유사도 0.570  학습 알고리즘을 이용한 시간 간 산업연관분석 모형 구축 및 일간 산업별 전력사용량 빅데이터를 이용한 모형의 적용
+      경상국립대학교 · 선정 2025 · row 10252
+   2. 의미 유사도 0.564  행동재무학에 기반한 주식 시장의 이상 현상 연구
+      부산대학교 · 선정 2023 · row 273
+   3. 의미 유사도 0.562  소셜미디어상의 이상 행위 탐지를 통한 사회적 악영향 감소 방안 연구
+      광운대학교 · 선정 2024 · row 6017
+   4. 의미 유사도 0.559  건설재료의 성능 평가 및 품질관리를 위한 데이터 사이언스 기법
+      한국과학기술원 · 선정 2023 · row 1911
+   5. 의미 유사도 0.551  질적탐구
+      한국질적탐구학회 · 선정 2023 · row 5597
+
+── 어휘 검색 baseline (char n-gram TF-IDF)
+   1. 어휘 점수 0.257  전력 소매시장의 디지털전환 연구: 스마트미터 기반 실시간 주택 전력사용 데이터를 중심으로
+   2. 어휘 점수 0.255  교사의 데이터 기반 수업 역량 모델 개발
+   3. 어휘 점수 0.243  차세대 데이터베이스 및 데이터 강화 기술
+   4. 어휘 점수 0.240  비정형 데이터 분석을 활용한 신기질 사의 데이터 기반 연구: 주제 분류를 중심으로
+   5. 어휘 점수 0.225  IPO 기업 투자설명서의 데이터 시각화 연구
+
+※ 관련도 기준값 미검증 상태 — 위 결과는 '가까운 검색 결과'이며 관련성은 별도 검증 필요
+(종료 코드 0)
+
+===== 완료 2026-09-09T16:55:37 =====
+로그: C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\reports\build_index.log
+산출물: artifacts\index_manifest.json, artifacts\project_embeddings.npy

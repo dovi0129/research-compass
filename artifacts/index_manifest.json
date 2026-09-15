@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-09-09T07:55:22+00:00",
+  "run_mode": "local_live",
+  "model_id": "BAAI/bge-m3",
+  "model_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "text_template": "title_only_v1",
+  "normalize": true,
+  "projects": {
+    "rows": 11783,
+    "dim": 1024,
+    "dtype": "float32",
+    "nan_rows": 0,
+    "zero_rows": 0,
+    "norm_min": 0.9999998211860657,
+    "norm_max": 1.0000001192092896,
+    "normalized": true
+  },
+  "fields": {
+    "rows": 851,
+    "dim": 1024,
+    "dtype": "float32",
+    "nan_rows": 0,
+    "zero_rows": 0,
+    "norm_min": 0.9999998807907104,
+    "norm_max": 1.0000001192092896,
+    "normalized": true
+  },
+  "project_snapshot": "3049029-54c13a4cf329",
+  "field_snapshot": "15120687-44a5fd8a20dc"
+}

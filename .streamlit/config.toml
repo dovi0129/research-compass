@@ -1,0 +1,55 @@
+# Research Compass — Streamlit 실행 설정 (v2 §21). 로컬 전용·오프라인.
+[server]
+address = "127.0.0.1"        # 외부 인터페이스에 바인딩하지 않는다
+headless = true              # 브라우저 자동 실행 없음 (원격 세션·시연 노트북 모두 동일)
+runOnSave = false
+enableXsrfProtection = true
+enableStaticServing = true   # static/fonts 의 Pretendard(OFL) 를 같은 출처에서 제공 — 외부 요청 없음
+
+[browser]
+gatherUsageStats = false     # 텔레메트리 전송 차단 — 검색 경로에서 외부 호출 금지 (v2 §21.3)
+serverAddress = "127.0.0.1"
+
+[logger]
+# Streamlit 파일 감시기가 매 실행 뒤 sys.modules 를 훑으며 transformers 의 lazy 이미지 모듈을 건드려 `No module named 'torchvision'`
+# 경고 트레이스백을 한 실행에 수백 줄 남긴다(warning 레벨, 무해). 진짜 오류가 묻히지 않게 error 이상만 남긴다. 우리 진행 로그(print)는 영향 없음.
+level = "error"
+
+# 라이트/다크 두 팔레트 (D-036 행정 네이비 · 슬레이트 다크). base 를 고정하지 않으므로 처음에는 운영체제 설정을 따른다.
+# 머리말의 화면 모드 토글이 같은 팔레트를 프런트엔드에 보내 세션 동안 유지한다 (app.py ST_THEMES 와 같은 값).
+[theme]
+font = "'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif"
+headingFont = "'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif"
+baseRadius = "6px"
+showWidgetBorder = true
+# fontFaces 는 배열 표(array of tables)라 이 아래에 적은 키는 전부 FontFace 의 필드로 읽힌다 — theme 키는 반드시 이 위에 (D-035 에서 잡은 ParseError)
+[[theme.fontFaces]]
+family = "Pretendard Variable"
+url = "app/static/fonts/PretendardVariable.woff2"
+weight = "45 920"
+style = "normal"
+
+[theme.light]
+primaryColor = "#1F4E8C"
+backgroundColor = "#F3F5F7"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1A2433"
+borderColor = "#D9DEE4"
+linkColor = "#1F4E8C"
+codeBackgroundColor = "#EAEEF2"
+
+[theme.dark]
+primaryColor = "#7FA3D1"
+backgroundColor = "#1E242C"
+secondaryBackgroundColor = "#262D36"
+textColor = "#E4E8ED"
+borderColor = "#3A434E"
+linkColor = "#9DBBE0"
+codeBackgroundColor = "#2E3640"
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = "stacktrace"   # 개발 중 오류 확인용. 시연 직전 "none" 으로 바꿔 로컬 경로 노출을 막는다
+# 화면 모드 토글이 프런트엔드에 보내는 메시지의 허용 출처 (이 앱 자신, 로컬만). app.py 가 실제 포트를 덧붙인다.
+allowedOrigins = ["http://127.0.0.1:8501", "http://localhost:8501", "http://127.0.0.1:8765", "http://localhost:8765",
+                  "http://127.0.0.1:8781", "http://localhost:8781"]

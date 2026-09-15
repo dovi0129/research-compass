@@ -1,0 +1,31 @@
+[project]
+name = "research-compass"
+version = "0.1.0"
+description = "공공 연구데이터 기반 AI 연구기회 탐색 및 연구주제 의사결정 지원 서비스 (MVP)"
+requires-python = ">=3.10"
+# 정제 데이터는 CSV 로 저장한다. pyarrow/parquet 을 요구하지 않는다.
+# (조직 보안정책이 pyarrow 의 Parquet DLL 을 차단하는 환경이 있음)
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+# G2 이후 단계에서 설치한다. 감사(G1)는 아래 없이 실행 가능해야 한다.
+search = ["torch>=2.2", "sentence-transformers>=3.0", "faiss-cpu>=1.8", "scikit-learn>=1.3"]
+# 검색 extra 가 통째로 실패할 때를 대비한 최소 조합 (임베딩 없이 baseline 검색만)
+search-min = ["faiss-cpu>=1.8", "scikit-learn>=1.3"]
+ui = ["streamlit>=1.36", "plotly>=5.20"]
+dev = ["pytest>=8.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

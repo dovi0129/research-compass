@@ -1,0 +1,228 @@
+schema_version: "1.0"
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  artifacts: artifacts
+  reports: reports
+
+# 원본 데이터 등록 정보. 실제 확보 파일은 sources[].file 로 지정한다.
+sources:
+  - key: D1
+    dataset_id: "3049029"
+    title: 한국연구재단_이알앤디_과제정보
+    source_url: https://www.data.go.kr/data/3049029/fileData.do
+    file: null                     # data/raw 아래 실제 파일명. 확보 후 기입
+    registry_row_count: 11788      # 등록 페이지 표기값. 검증 대상이며 정답이 아님
+    registry_columns:
+      - 사업년도
+      - 선정년도
+      - 대사업명
+      - 중사업명
+      - 소사업명
+      - 세부사업명
+      - 과제명
+      - 연구책임자명
+      - 연구자번호
+      - 주관기관명
+      - 보안과제여부
+    registry_period_claim: null    # 등록 페이지 설명문에 명시된 대상기간 없음
+  - key: D2
+    dataset_id: "15120687"
+    title: 한국연구재단_선정과제 연구분야
+    source_url: https://www.data.go.kr/data/15120687/fileData.do
+    file: null
+    registry_row_count: 851
+    registry_columns:
+      - 과학기술표준명
+      - 중심분야코드
+      - 2025년 선정횟수
+    registry_period_claim: "2023년 연구분야별 선정과제 현황"   # 컬럼명(2025년)과 충돌
+    # 정책: 구현상 기준연도는 원본 CSV 컬럼명을 따른다. 충돌 사실은 provenance 로 보존한다.
+    period_basis: column_name          # column_name | description | verified
+    period_basis_value: "2025"
+    period_status: conflicting         # 공식 확인 전까지 verified 로 바꾸지 않는다
+  - key: K18
+    role: auxiliary_reference          # D2 의 기준 분류체계 (모집단 판별용)
+    dataset_id: "15065876"
+    title: 한국과학기술기획평가원(KISTEP)_과학기술표준분류정보
+    source_url: https://www.data.go.kr/data/15065876/fileData.do
+    file: 한국과학기술기획평가원(KISTEP)_과학기술표준분류정보_20210923.csv
+    registry_row_count: null
+    scheme_version: "2018"
+    purpose: 2018년 국가과학기술표준분류체계(연구분야 RCSARE) 복원. D2 의 기준 체계.
+    caveat: 소분류 6자리 코드 컬럼이 없음 — 중분류(4자리) + 소분류명까지만 확인 가능
+  - key: K1
+    role: crosswalk_only               # 모집단 산정용 아님. 2018→2023 신구 코드 대조 전용
+    dataset_id: "15065871"
+    title: 한국과학기술기획평가원(KISTEP)_과학기술표준분류
+    source_url: https://www.data.go.kr/data/15065871/fileData.do
+    file: 한국과학기술기획평가원(KISTEP)_과학기술표준분류_20251231.csv
+    registry_row_count: 2807
+    registry_columns:
+      - 대분류코드
+      - 대분류코드명
+      - 중분류코드
+      - 중분류코드명
+      - 소분류코드
+      - 소분류코드명
+    registry_period_claim: null
+    scheme_version: "2023"
+    purpose: 2018→2023 신구 코드 crosswalk 전용. **D2 모집단 산정에 사용 금지**
+
+audit:
+  encoding_candidates: [utf-8-sig, utf-8, cp949, euc-kr]
+  # 임베딩·화면·내보내기에서 항상 제외할 개인식별 성격 컬럼
+  pii_columns: [연구책임자명, 연구자번호]
+  # 보안과제 표시 컬럼과 제외 기준값
+  security_flag_column: 보안과제여부
+  security_exclude_values: ["Y", "y", "여", "예", "보안"]
+
+embedding:
+  model_id: BAAI/bge-m3
+  # 확보한 커밋으로 고정 (명세 20.1). artifacts/index_manifest.json 의 model_revision 과 같아야 한다.
+  # 이 값이 바뀌면 인덱스와 tau 가 모두 무효다 (개정안 6.4).
+  revision: 5617a9f61b028005a4858fdac845db406aefb181
+  device: cpu
+  batch_size: 8
+  max_tokens: 512
+  normalize: true
+  text_template: title_only_v1
+
+retrieval:
+  backend: faiss_flat_ip
+  default_top_k: 10
+  max_top_k: 50
+  # RRF 결합 (개정안 FR-01a). 조건 C 채점에서 dev·test 모두 A 미달 -> 기본 off (D-020).
+  # 코드 경로는 유지한다. `search --hybrid` 로 켤 수 있고 결과에 HYBRID_DISABLED_BY_EVAL 경고가 붙는다.
+  hybrid: false
+  rrf_k: 60
+  candidate_pool: 100
+  project_relevance_threshold: null
+  field_relevance_threshold: null
+  threshold_space: null            # s_sem | margin | rank | s_rr
+  threshold_target_precision: 0.7
+  threshold_evidence_path: null
+
+baseline:
+  kind: char_tfidf
+  ngram_min: 2
+  ngram_max: 5
+
+analytics:
+  default_mode: snapshot_distribution
+  # D2 기반 시계열 분석은 수행하지 않는다 (선정횟수 컬럼 1개). 영구 비활성.
+  enable_comparable_trend: false
+  enable_d2_timeseries: false
+  enable_project_field_join: false
+  missing_year_policy: separate_unknown
+
+classification:
+  # D2 의 기준 분류체계. verify 명령의 실측 결과로 확정한다.
+  d2_scheme_version: "2018"
+  d2_scheme_source: K18
+  population_source: K18             # 모집단은 2018 체계에서만 산정
+  crosswalk_source: K1               # 2023 표는 신구 대조 전용
+  population_status: blocked         # 2018 참조자료에 소분류 6자리 코드 없음
+
+coverage:
+  # KISTEP 표준분류에는 있으나 D2 에 없는 코드의 취급.
+  # 'unobserved' = 이 스냅샷에서 관측되지 않음. '선정 0건' 이 아니다.
+  absent_code_semantics: unobserved
+  forbid_zero_label: true
+  min_code_match_rate: 0.95          # D2 코드가 KISTEP 소분류에 존재해야 하는 최소 비율
+
+opportunity:
+  mode: gated_rules
+  relevance_pool_size: 20
+  min_comparison_fields: 5
+  low_count_quantile: 0.25
+  quantile_method: linear
+  max_candidates: 3
+  require_verified_period: true
+  require_verified_comparison_group: true
+
+rerank:
+  enabled: true
+  model_id: BAAI/bge-reranker-v2-m3
+  # 확보한 커밋으로 고정 (개정안 5.1). 이 값이 바뀌면 tau 는 무효가 되고 재측정한다 (개정안 6.4).
+  revision: 953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+  top_n: 20                        # 10~50
+  max_tokens: 256
+  device: cpu
+  timeout_s: 10
+
+llm:
+  enabled: false
+
+runtime:
+  mode: local_live
+  allow_network_during_search: false
+  persist_user_queries: false
+  bind_host: 127.0.0.1
+
+# ---------------------------------------------------------------------------
+# 작업공간 (명세 v2 §16). 기존 키를 복제하지 않는다 — 중복되는 값은 위 블록이 단일 소스다.
+#   검색 엔진·tau·재정렬 설정: 위의 retrieval / rerank / embedding
+#   여기서는 작업공간 고유의 UI·흐름·정책만 정한다.
+# ---------------------------------------------------------------------------
+workspace:
+  schema_version: "workspace/2.0"
+  enabled: true
+  perspectives:
+    enabled: [full, method, target_goal]
+    automatic_fanout: false          # 관점 선택만으로 전체 관점을 자동 실행하지 않음 (v2 §6.5)
+    require_query_confirmation: true # 사용자가 실제 검색문을 확인한 뒤에만 실행
+  elements:
+    input_mode: manual               # 요소 자동 보완 금지 (v2 §6.2). LLM 추출은 별도 승인
+    max_elements: 3
+  selections:
+    max_projects: 5                  # 화면 복잡도를 줄이기 위한 설계값 (v2 §8.1)
+    preserve_across_perspectives: true
+  comparison:
+    evidence_scope: title_only       # 초록이 없으므로 근거 범위는 제목뿐 (v2 §4.1)
+    automatic_method: literal_match
+    no_match_status: needs_review    # 자동 미검출 ≠ 연구 부재 (v2 §9.2)
+    require_quote_validation: true   # title_raw[start:end] == quote 검증 (v2 §9.5)
+    require_user_review_for_interpretation: true
+  next_actions:
+    mode: rule_template              # 규칙 기반. 생성형 모델 미사용
+    max_items: 3
+    auto_execute: false              # 새 검색은 사용자 확인 후에만 (v2 §10.2)
+  export:
+    formats: [markdown, json]
+    automatic_persistence: false     # 명시적 내보내기만 (v2 §8.4)
+
+retrieval_policy:
+  # 기본 엔진은 검증된 결정을 따른다 (D-023). E = 의미검색 + 재정렬(N_r=20).
+  # 실행 기본값은 위 retrieval.hybrid=false + rerank.enabled=true 조합이 만든다 — 여기 값은 기록이다.
+  default_engine_source: existing_validated_decision
+  default_engine: Retrieval-E
+  default_engine_evidence_path: evaluation/results/evaluation_conditions_dev.json
+  unresolved_default: semantic_only   # 근거가 무효화되면 A 로 되돌린다
+  new_model_sweep: false             # A/E 판정 후 작은 점수차로 조건을 늘리지 않음 (v2 §19)
+  workspace_default_top_k: 5         # UI 설계값 (v2 §7.2)
+  workspace_max_top_k: 10
+  # 순위 기반 검색·비교·메모는 전역 tau 검증을 기다리지 않는다 (v2 §7.3)
+  global_tau_required_for_ranked_display: false
+
+analysis_policy:
+  allow_scoped_descriptive_summary: true      # scope 를 명시한 기술통계만 허용 (v2 §12.1)
+  calibrated_relevant_corpus_requires_validation: true
+  comparable_trend_requires_verified_scope: true
+  opportunity_candidates_follow_existing_gates: true
+  field_count_comparison_requires_verified_period: true
+  project_field_join_without_official_mapping: false
+  absent_code_semantics: unobserved            # coverage 블록과 같은 값이어야 한다
+
+optional_extensions:
+  # 전부 별도 승인 대상 (v2 §18). 이 파일에서 true 로 바꾸는 것이 승인은 아니다.
+  llm_query_structuring: false
+  llm_evidence_assistance: false
+  detailed_source_linking: false
+  npu_acceleration: false
+
+runtime_policy:
+  # runtime 블록과 중복되지 않는 정책만. 실행 모드·bind_host 는 runtime 이 단일 소스다.
+  default_execution: local
+  allow_external_inference: false

@@ -1,0 +1,207 @@
+{
+  "generated_at": "2026-09-09T06:41:47+00:00",
+  "policy": {
+    "kistep_role": "auxiliary",
+    "absent_code_semantics": "unobserved",
+    "note": "KISTEP 에 있으나 D2 에 없는 코드는 '선정 0건' 이 아니라 'unobserved' 다."
+  },
+  "snapshots": {
+    "D2": {
+      "key": "D2",
+      "dataset_id": "15120687",
+      "title": "한국연구재단_선정과제 연구분야",
+      "source_url": "https://www.data.go.kr/data/15120687/fileData.do",
+      "file_name": "한국연구재단_선정과제 연구분야_20250825.csv",
+      "file_path": "/home/claude/research-compass/data/raw/한국연구재단_선정과제 연구분야_20250825.csv",
+      "bytes": 27570,
+      "sha256": "44a5fd8a20dc48d7280651d487a625f9a2632dc84dd4fad404b584a545112995",
+      "snapshot_id": "15120687-44a5fd8a20dc",
+      "acquired_at": "2026-09-09T06:41:47+00:00",
+      "encoding": "utf-8-sig",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "과학기술표준명",
+        "중심분야코드",
+        "2025년 선정횟수"
+      ],
+      "notes": []
+    },
+    "K1": {
+      "key": "K1",
+      "dataset_id": "15065871",
+      "title": "한국과학기술기획평가원(KISTEP)_과학기술표준분류",
+      "source_url": "https://www.data.go.kr/data/15065871/fileData.do",
+      "file_name": "한국과학기술기획평가원(KISTEP)_과학기술표준분류_20251231.csv",
+      "file_path": "/home/claude/research-compass/data/raw/한국과학기술기획평가원(KISTEP)_과학기술표준분류_20251231.csv",
+      "bytes": 150102,
+      "sha256": "b9b2fb688f7832e83422f535519f6e1ea665104426838b5d98567a2869241e4b",
+      "snapshot_id": "15065871-b9b2fb688f78",
+      "acquired_at": "2026-09-09T06:41:47+00:00",
+      "encoding": "cp949",
+      "encoding_confidence": "ok",
+      "delimiter": ",",
+      "header": [
+        "대분류코드",
+        "대분류코드명",
+        "중분류코드",
+        "중분류코드명",
+        "소분류코드",
+        "소분류코드명"
+      ],
+      "notes": []
+    }
+  },
+  "result": {
+    "d2_rows": 851,
+    "d2_codes": 851,
+    "kistep_rows": 2807,
+    "kistep_major": 22,
+    "kistep_mid": 277,
+    "kistep_minor": 2807,
+    "code_match": 109,
+    "code_match_rate": 0.128085,
+    "name_exact": 93,
+    "name_exact_rate": 0.853211,
+    "name_normalized": 95,
+    "name_normalized_rate": 0.87156,
+    "in_scheme_prefixes": [
+      "EA",
+      "EB",
+      "EC",
+      "ED",
+      "EE",
+      "EF",
+      "EG",
+      "EH",
+      "EI",
+      "LA",
+      "LB",
+      "LC",
+      "NA",
+      "NB",
+      "NC",
+      "ND",
+      "OA",
+      "OB",
+      "OC"
+    ],
+    "out_scheme_prefixes": [
+      "HA",
+      "HB",
+      "HC",
+      "HD",
+      "HE",
+      "SA",
+      "SB",
+      "SC",
+      "SD",
+      "SE",
+      "SF",
+      "SG",
+      "SH",
+      "SI"
+    ],
+    "in_scheme_rows": 111,
+    "out_scheme_rows": 740,
+    "in_scheme_match_rate": 0.981982,
+    "unobserved_in_scope": 1608,
+    "scope_minor_total": 1717,
+    "unresolved_rows": 740,
+    "name_diff_samples": [
+      {
+        "code": "EA0502",
+        "d2_name": "로봇 제어 및 지능화기술",
+        "kistep_name": "로봇 제어/지능화기술"
+      },
+      {
+        "code": "ED0499",
+        "d2_name": "달리 분류되지 않는 반도체소자/시스템",
+        "kistep_name": "달리 분류되지 않는 반도체 소자·회로"
+      },
+      {
+        "code": "EE0199",
+        "d2_name": "달리 분류되지 않는 정보 기반이론",
+        "kistep_name": "달리 분류되지 않는 정보이론"
+      },
+      {
+        "code": "EG0704",
+        "d2_name": "방사선 의학 및 의공학 기술",
+        "kistep_name": "방사선 의학/의공학 기술"
+      },
+      {
+        "code": "EH0205",
+        "d2_name": "하/폐수 고도처리 및 핵심요소기술",
+        "kistep_name": "하/폐수 고도처리/핵심요소기술"
+      },
+      {
+        "code": "EI0201",
+        "d2_name": "국토지능화 및 공간정보",
+        "kistep_name": "국토지능화/공간정보"
+      },
+      {
+        "code": "EI1101",
+        "d2_name": "시설물점검 및 진단기술",
+        "kistep_name": "시설물 점검/진단기술"
+      },
+      {
+        "code": "LC0208",
+        "d2_name": "신경학",
+        "kistep_name": "신경과학"
+      },
+      {
+        "code": "LC0499",
+        "d2_name": "달리 분류되지 않는 치료/진단기기 개발기술",
+        "kistep_name": "달리 분류되지 않는 의료기기"
+      },
+      {
+        "code": "LC0603",
+        "d2_name": "병원의료정보시스템 및 설비",
+        "kistep_name": "병원의료정보시스템/설비"
+      },
+      {
+        "code": "LC0901",
+        "d2_name": "임상간호 중재기술",
+        "kistep_name": "임상간호 중재"
+      },
+      {
+        "code": "LC0902",
+        "d2_name": "지역사회/보건간호 중재기술",
+        "kistep_name": "지역사회/보건간호 중재"
+      },
+      {
+        "code": "LC1208",
+        "d2_name": "단체급식 관리 및 급식경영",
+        "kistep_name": "단체급식 관리/급식경영"
+      },
+      {
+        "code": "NC0901",
+        "d2_name": "나노소재화학",
+        "kistep_name": "나노재료화학"
+      }
+    ],
+    "unmatched_in_scheme": [
+      {
+        "code": "LC0504",
+        "d2_name": "생체재료"
+      },
+      {
+        "code": "LC0506",
+        "d2_name": "재활훈련기기"
+      }
+    ]
+  },
+  "gate": {
+    "overall": {
+      "rate": 0.128085,
+      "threshold": 0.95,
+      "pass": false
+    },
+    "in_scheme_only": {
+      "rate": 0.981982,
+      "threshold": 0.95,
+      "pass": true,
+      "coverage_of_d2": 0.130435
+    }
+  }
+}

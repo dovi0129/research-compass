@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-09-09T11:18:59+00:00",
+  "run_mode": "local_live",
+  "model_id": "BAAI/bge-reranker-v2-m3",
+  "model_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+  "dtype": "torch.float32",
+  "device": "cpu",
+  "max_tokens": 256,
+  "top_n": 20,
+  "load_seconds": 1.91,
+  "score_note": "출력은 로짓이며 확률·정확도가 아니다. 표시값은 시그모이드 변환."
+}

@@ -1,0 +1,1076 @@
+{
+  "split": "test",
+  "k": 5,
+  "run_mode": "local_live",
+  "perspective": "full",
+  "label_sources": {
+    "llm": 127
+  },
+  "label_sheets": [
+    "label_sheet_test.llm.csv",
+    "label_sheet_test_incr.llm.csv"
+  ],
+  "labeler_note": "라벨은 기존 시트 재사용 (라벨은 점수기와 독립, 개정안 6.1). LLM 라벨과 사람 라벨을 하나의 정확도로 섞지 않는다 (v2 §17.3).",
+  "used_for_selection": true,
+  "conditions": {
+    "A": {
+      "n_queries": 10,
+      "k": 5,
+      "strict": [
+        0.4,
+        0.4
+      ],
+      "lenient": [
+        0.92,
+        0.92
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "test01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            1.0,
+            1.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test06",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test07",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test08",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test09",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test10",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "의미 단독",
+      "warnings": [
+        "GATE_UNCALIBRATED"
+      ],
+      "effective_queries": {
+        "test01": "지방소멸과 인구감소 지역의 정책 대응",
+        "test02": "고령자 돌봄 로봇의 윤리적 쟁점",
+        "test03": "근대 한국문학에 나타난 식민지 경험",
+        "test04": "탄소중립 정책의 국가 간 비교 연구",
+        "test05": "소셜미디어 허위정보 확산과 팩트체크",
+        "test06": "운동선수의 심리기술 훈련 효과",
+        "test07": "ESG 경영과 기업 재무성과의 관계",
+        "test08": "산업 전력 데이터 이상탐지",
+        "test09": "불교 철학의 마음 개념과 현대 심리학의 접점",
+        "test10": "다문화 가정 아동의 언어 발달 지원"
+      },
+      "latency_s": {
+        "mean": 0.128,
+        "max": 0.296
+      }
+    },
+    "B": {
+      "n_queries": 10,
+      "k": 5,
+      "strict": [
+        0.22,
+        0.26
+      ],
+      "lenient": [
+        0.78,
+        0.82
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "test01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 2,
+          "strict_p@5": [
+            0.2,
+            0.6
+          ],
+          "lenient_p@5": [
+            0.6,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "query_id": "test06",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test07",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test08",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.2,
+            0.2
+          ]
+        },
+        {
+          "query_id": "test09",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test10",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "어휘 단독",
+      "warnings": [],
+      "effective_queries": {
+        "test01": "지방소멸과 인구감소 지역의 정책 대응",
+        "test02": "고령자 돌봄 로봇의 윤리적 쟁점",
+        "test03": "근대 한국문학에 나타난 식민지 경험",
+        "test04": "탄소중립 정책의 국가 간 비교 연구",
+        "test05": "소셜미디어 허위정보 확산과 팩트체크",
+        "test06": "운동선수의 심리기술 훈련 효과",
+        "test07": "ESG 경영과 기업 재무성과의 관계",
+        "test08": "산업 전력 데이터 이상탐지",
+        "test09": "불교 철학의 마음 개념과 현대 심리학의 접점",
+        "test10": "다문화 가정 아동의 언어 발달 지원"
+      }
+    },
+    "C": {
+      "n_queries": 10,
+      "k": 5,
+      "strict": [
+        0.36,
+        0.36
+      ],
+      "lenient": [
+        0.9,
+        0.9
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "test01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            1.0,
+            1.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test06",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test07",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test08",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.2,
+            0.2
+          ]
+        },
+        {
+          "query_id": "test09",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test10",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "RRF",
+      "warnings": [
+        "GATE_UNCALIBRATED",
+        "HYBRID_DISABLED_BY_EVAL"
+      ],
+      "effective_queries": {
+        "test01": "지방소멸과 인구감소 지역의 정책 대응",
+        "test02": "고령자 돌봄 로봇의 윤리적 쟁점",
+        "test03": "근대 한국문학에 나타난 식민지 경험",
+        "test04": "탄소중립 정책의 국가 간 비교 연구",
+        "test05": "소셜미디어 허위정보 확산과 팩트체크",
+        "test06": "운동선수의 심리기술 훈련 효과",
+        "test07": "ESG 경영과 기업 재무성과의 관계",
+        "test08": "산업 전력 데이터 이상탐지",
+        "test09": "불교 철학의 마음 개념과 현대 심리학의 접점",
+        "test10": "다문화 가정 아동의 언어 발달 지원"
+      },
+      "latency_s": {
+        "mean": 0.127,
+        "max": 0.141
+      }
+    },
+    "D": {
+      "n_queries": 10,
+      "k": 5,
+      "strict": [
+        0.4,
+        0.5
+      ],
+      "lenient": [
+        0.78,
+        0.88
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "test01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            1.0,
+            1.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.4,
+            0.6
+          ],
+          "lenient_p@5": [
+            0.6,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test06",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test07",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test08",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.2,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.2,
+            0.4
+          ]
+        },
+        {
+          "query_id": "test09",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 3,
+          "strict_p@5": [
+            0.2,
+            0.8
+          ],
+          "lenient_p@5": [
+            0.4,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test10",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "RRF + 재정렬 N_r=20",
+      "warnings": [
+        "GATE_UNCALIBRATED",
+        "HYBRID_DISABLED_BY_EVAL"
+      ],
+      "effective_queries": {
+        "test01": "지방소멸과 인구감소 지역의 정책 대응",
+        "test02": "고령자 돌봄 로봇의 윤리적 쟁점",
+        "test03": "근대 한국문학에 나타난 식민지 경험",
+        "test04": "탄소중립 정책의 국가 간 비교 연구",
+        "test05": "소셜미디어 허위정보 확산과 팩트체크",
+        "test06": "운동선수의 심리기술 훈련 효과",
+        "test07": "ESG 경영과 기업 재무성과의 관계",
+        "test08": "산업 전력 데이터 이상탐지",
+        "test09": "불교 철학의 마음 개념과 현대 심리학의 접점",
+        "test10": "다문화 가정 아동의 언어 발달 지원"
+      },
+      "latency_s": {
+        "mean": 2.467,
+        "max": 2.891
+      }
+    },
+    "E": {
+      "n_queries": 10,
+      "k": 5,
+      "strict": [
+        0.44,
+        0.48
+      ],
+      "lenient": [
+        0.9,
+        0.94
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "test01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test06",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test07",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test08",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.2,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.4,
+            0.6
+          ]
+        },
+        {
+          "query_id": "test09",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.4,
+            0.6
+          ],
+          "lenient_p@5": [
+            0.8,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test10",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "의미 + 재정렬 N_r=20",
+      "warnings": [
+        "GATE_UNCALIBRATED"
+      ],
+      "effective_queries": {
+        "test01": "지방소멸과 인구감소 지역의 정책 대응",
+        "test02": "고령자 돌봄 로봇의 윤리적 쟁점",
+        "test03": "근대 한국문학에 나타난 식민지 경험",
+        "test04": "탄소중립 정책의 국가 간 비교 연구",
+        "test05": "소셜미디어 허위정보 확산과 팩트체크",
+        "test06": "운동선수의 심리기술 훈련 효과",
+        "test07": "ESG 경영과 기업 재무성과의 관계",
+        "test08": "산업 전력 데이터 이상탐지",
+        "test09": "불교 철학의 마음 개념과 현대 심리학의 접점",
+        "test10": "다문화 가정 아동의 언어 발달 지원"
+      },
+      "latency_s": {
+        "mean": 2.678,
+        "max": 4.125
+      }
+    },
+    "E'": {
+      "n_queries": 10,
+      "k": 5,
+      "strict": [
+        0.38,
+        0.42
+      ],
+      "lenient": [
+        0.86,
+        0.9
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "test01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.4,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test06",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "test07",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test08",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.2,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.4,
+            0.6
+          ]
+        },
+        {
+          "query_id": "test09",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.4,
+            0.6
+          ],
+          "lenient_p@5": [
+            0.8,
+            1.0
+          ]
+        },
+        {
+          "query_id": "test10",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "의미 + 재정렬 N_r=50",
+      "warnings": [
+        "GATE_UNCALIBRATED"
+      ],
+      "effective_queries": {
+        "test01": "지방소멸과 인구감소 지역의 정책 대응",
+        "test02": "고령자 돌봄 로봇의 윤리적 쟁점",
+        "test03": "근대 한국문학에 나타난 식민지 경험",
+        "test04": "탄소중립 정책의 국가 간 비교 연구",
+        "test05": "소셜미디어 허위정보 확산과 팩트체크",
+        "test06": "운동선수의 심리기술 훈련 효과",
+        "test07": "ESG 경영과 기업 재무성과의 관계",
+        "test08": "산업 전력 데이터 이상탐지",
+        "test09": "불교 철학의 마음 개념과 현대 심리학의 접점",
+        "test10": "다문화 가정 아동의 언어 발달 지원"
+      },
+      "latency_s": {
+        "mean": 7.286,
+        "max": 9.796
+      }
+    }
+  },
+  "label_integrity_problems": []
+}

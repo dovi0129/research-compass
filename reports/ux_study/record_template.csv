@@ -1,0 +1,7 @@
+participant_code,order,condition,topic_code,is_team_member,start_hhmm,end_hhmm,duration_min,stop_reason,completed,n_selected,n_supported,n_unconfirmed_noted,misread_absence,overclaim_user,overclaim_system,interventions,burden_1_5,reuse_1_5,notes
+P1,1,UX-L,A,,,,,,,,,,,,,,,,
+P1,2,UX-W,B,,,,,,,,,,,,,,,,
+P2,1,UX-W,A,,,,,,,,,,,,,,,,
+P2,2,UX-L,B,,,,,,,,,,,,,,,,
+P3,1,UX-L,C,,,,,,,,,,,,,,,,
+P3,2,UX-W,D,,,,,,,,,,,,,,,,

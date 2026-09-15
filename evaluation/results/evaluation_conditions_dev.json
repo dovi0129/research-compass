@@ -1,0 +1,627 @@
+{
+  "split": "dev",
+  "k": 5,
+  "run_mode": "local_live",
+  "perspective": "full",
+  "label_sources": {
+    "llm": 121
+  },
+  "label_sheets": [
+    "label_sheet_dev.llm.csv",
+    "label_sheet_tau_dev.llm.csv",
+    "label_sheet_dev_incr.llm.csv"
+  ],
+  "labeler_note": "라벨은 기존 시트 재사용 (라벨은 점수기와 독립, 개정안 6.1). LLM 라벨과 사람 라벨을 하나의 정확도로 섞지 않는다 (v2 §17.3).",
+  "used_for_selection": true,
+  "conditions": {
+    "A": {
+      "n_queries": 5,
+      "k": 5,
+      "strict": [
+        0.44,
+        0.44
+      ],
+      "lenient": [
+        0.96,
+        0.96
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "dev01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "dev02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "의미 단독",
+      "warnings": [
+        "GATE_UNCALIBRATED"
+      ],
+      "effective_queries": {
+        "dev01": "조선후기 향촌사회의 신분 변동과 지배구조",
+        "dev02": "디지털 플랫폼 노동과 고용 불안정",
+        "dev03": "청소년 스마트폰 과의존과 정신건강",
+        "dev04": "제조공정에서 강화학습을 활용한 에너지 최적화",
+        "dev05": "한국어 학습자를 위한 AI 기반 작문 피드백 시스템"
+      },
+      "latency_s": {
+        "mean": 0.141,
+        "max": 0.313
+      }
+    },
+    "B": {
+      "n_queries": 5,
+      "k": 5,
+      "strict": [
+        0.24,
+        0.28
+      ],
+      "lenient": [
+        0.76,
+        0.8
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "dev01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "query_id": "dev02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.2,
+            0.4
+          ],
+          "lenient_p@5": [
+            0.4,
+            0.6
+          ]
+        },
+        {
+          "query_id": "dev03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "dev05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "어휘 단독",
+      "warnings": [],
+      "effective_queries": {
+        "dev01": "조선후기 향촌사회의 신분 변동과 지배구조",
+        "dev02": "디지털 플랫폼 노동과 고용 불안정",
+        "dev03": "청소년 스마트폰 과의존과 정신건강",
+        "dev04": "제조공정에서 강화학습을 활용한 에너지 최적화",
+        "dev05": "한국어 학습자를 위한 AI 기반 작문 피드백 시스템"
+      }
+    },
+    "C": {
+      "n_queries": 5,
+      "k": 5,
+      "strict": [
+        0.36,
+        0.4
+      ],
+      "lenient": [
+        0.92,
+        0.96
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "dev01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 1,
+          "strict_p@5": [
+            0.6,
+            0.8
+          ],
+          "lenient_p@5": [
+            0.8,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            0.8,
+            0.8
+          ]
+        },
+        {
+          "query_id": "dev05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "RRF",
+      "warnings": [
+        "GATE_UNCALIBRATED",
+        "HYBRID_DISABLED_BY_EVAL"
+      ],
+      "effective_queries": {
+        "dev01": "조선후기 향촌사회의 신분 변동과 지배구조",
+        "dev02": "디지털 플랫폼 노동과 고용 불안정",
+        "dev03": "청소년 스마트폰 과의존과 정신건강",
+        "dev04": "제조공정에서 강화학습을 활용한 에너지 최적화",
+        "dev05": "한국어 학습자를 위한 AI 기반 작문 피드백 시스템"
+      },
+      "latency_s": {
+        "mean": 0.103,
+        "max": 0.11
+      }
+    },
+    "D": {
+      "n_queries": 5,
+      "k": 5,
+      "strict": [
+        0.56,
+        0.56
+      ],
+      "lenient": [
+        1.0,
+        1.0
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "dev01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            1.0,
+            1.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.6,
+            0.6
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "RRF + 재정렬 N_r=20",
+      "warnings": [
+        "GATE_UNCALIBRATED",
+        "HYBRID_DISABLED_BY_EVAL"
+      ],
+      "effective_queries": {
+        "dev01": "조선후기 향촌사회의 신분 변동과 지배구조",
+        "dev02": "디지털 플랫폼 노동과 고용 불안정",
+        "dev03": "청소년 스마트폰 과의존과 정신건강",
+        "dev04": "제조공정에서 강화학습을 활용한 에너지 최적화",
+        "dev05": "한국어 학습자를 위한 AI 기반 작문 피드백 시스템"
+      },
+      "latency_s": {
+        "mean": 2.147,
+        "max": 2.344
+      }
+    },
+    "E": {
+      "n_queries": 5,
+      "k": 5,
+      "strict": [
+        0.56,
+        0.56
+      ],
+      "lenient": [
+        1.0,
+        1.0
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "dev01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "의미 + 재정렬 N_r=20",
+      "warnings": [
+        "GATE_UNCALIBRATED"
+      ],
+      "effective_queries": {
+        "dev01": "조선후기 향촌사회의 신분 변동과 지배구조",
+        "dev02": "디지털 플랫폼 노동과 고용 불안정",
+        "dev03": "청소년 스마트폰 과의존과 정신건강",
+        "dev04": "제조공정에서 강화학습을 활용한 에너지 최적화",
+        "dev05": "한국어 학습자를 위한 AI 기반 작문 피드백 시스템"
+      },
+      "latency_s": {
+        "mean": 2.234,
+        "max": 2.797
+      }
+    },
+    "E'": {
+      "n_queries": 5,
+      "k": 5,
+      "strict": [
+        0.52,
+        0.52
+      ],
+      "lenient": [
+        1.0,
+        1.0
+      ],
+      "n_missing_labels": 0,
+      "missing": [],
+      "per_query": [
+        {
+          "query_id": "dev01",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.0,
+            0.0
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev02",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev03",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev04",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.2,
+            0.2
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "query_id": "dev05",
+          "n_top": 5,
+          "n_missing_label": 0,
+          "n_U": 0,
+          "strict_p@5": [
+            0.8,
+            0.8
+          ],
+          "lenient_p@5": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "note": "값은 (하한, 상한). U 와 미라벨을 하한에서는 비관련, 상한에서는 관련으로 계산. 미라벨이 0 이 아니면 확정값이 아니다.",
+      "label": "의미 + 재정렬 N_r=50",
+      "warnings": [
+        "GATE_UNCALIBRATED"
+      ],
+      "effective_queries": {
+        "dev01": "조선후기 향촌사회의 신분 변동과 지배구조",
+        "dev02": "디지털 플랫폼 노동과 고용 불안정",
+        "dev03": "청소년 스마트폰 과의존과 정신건강",
+        "dev04": "제조공정에서 강화학습을 활용한 에너지 최적화",
+        "dev05": "한국어 학습자를 위한 AI 기반 작문 피드백 시스템"
+      },
+      "latency_s": {
+        "mean": 5.691,
+        "max": 6.078
+      }
+    }
+  },
+  "label_integrity_problems": []
+}

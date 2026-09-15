@@ -1,0 +1,130 @@
+{
+  "project_search": {
+    "status": "verified",
+    "reason": "과제명 확보. 공백 과제명 0건. 길이 중앙값 37자, 최대 185자, 10자 미만 521건",
+    "scope": "검색 텍스트 = 정규화 과제명 (초록·분야코드 없음)",
+    "limitations": [
+      "제목 한 줄만으로 임베딩하므로 짧은 과제명의 변별력이 낮을 수 있음",
+      "공식 과제번호가 없어 '과제 수'가 아니라 '수록 레코드 수'로만 집계"
+    ]
+  },
+  "year_distribution": {
+    "status": "verified",
+    "reason": "선정년도 유효 11788건, 범위 2023~2025, 파싱실패 0건",
+    "scope": "다운로드한 스냅샷 내 선정연도별 수록 레코드 분포",
+    "limitations": [
+      "국가 전체 연구지원 현황이 아님",
+      "계속과제 반복 수록 가능성이 있어 해당 연도의 신규 선정 건수로 해석 금지",
+      "미상 연도는 별도 표기하며 0 으로 채우지 않음"
+    ]
+  },
+  "field_search": {
+    "status": "verified",
+    "reason": "'과학기술표준명' 고유값 848개 / 공백 0건 / 전체 851행",
+    "scope": "입력 주제와 공개 분야명 간 의미 유사도",
+    "limitations": [
+      "개별 과제의 공식 분류를 뜻하지 않음"
+    ]
+  },
+  "field_counts": {
+    "status": "disabled",
+    "reason": "기준기간 충돌 미해결 — 컬럼명 연도 ['2025'] 와 등록 페이지 설명문 연도 ['2023'] 가 다릅니다. 확정 전에는 period_status=conflicting 으로 두고 분야 간 비교·순위화·후보 생성을 중단합니다. (명세 4.2, 7.2, 9.4)",
+    "evidence_refs": [
+      {
+        "column_years": [
+          "2025"
+        ],
+        "description_years": [
+          "2023"
+        ],
+        "description_raw": "2023년 연구분야별 선정과제 현황"
+      }
+    ],
+    "limitations": [
+      "원문 확인 영역에서 원본 컬럼명과 '기간 확인 필요' 표시만 허용",
+      "비교 차트·순위화 금지"
+    ]
+  },
+  "comparable_trend": {
+    "status": "disabled",
+    "reason": "D2 의 선정횟수 컬럼이 1개뿐이라 이 데이터만으로 시계열을 구성할 수 없음. 연도별 변화는 D1 의 선정년도 분포(year_distribution)로만 제시",
+    "evidence_refs": [
+      {
+        "columns": [
+          "2025년 선정횟수"
+        ]
+      }
+    ]
+  },
+  "project_field_join": {
+    "status": "disabled",
+    "reason": "D1 과 D2 사이에 공식 연결키가 없음. 분야명 임베딩의 최근접 코드를 과제의 공식 분야 코드로 저장하는 것을 금지 (명세 7.3)"
+  },
+  "opportunity_candidates": {
+    "status": "disabled",
+    "reason": "비교 가능한 검증된 선정 통계가 없어 후보를 생성하지 않음. UI 는 후보 대신 판단 보류 사유를 표시 (명세 9.4)"
+  },
+  "perspective_search": {
+    "status": "available",
+    "reason": "사용자가 확정한 탐색 요소로 검색문을 구성해 관점당 1회 실행. 관점 이름은 탐색 의도의 표식이며 반환 과제가 그 의도를 충족한다는 판정이 아님",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "관점별 결과를 자동 통합(RRF·점수 평균)하지 않음",
+      "서로 다른 질의의 원시 점수를 같은 축에서 비교하지 않음"
+    ]
+  },
+  "comparison_workspace": {
+    "status": "available",
+    "reason": "선택 과제를 (source_snapshot_id, record_id) 로 중복 없이 보관하고 검색 출처 이력을 남김",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "여러 검색의 점수를 하나의 대표 관련도로 합치지 않음",
+      "기본 순서는 사용자 선택 순서"
+    ]
+  },
+  "title_evidence_review": {
+    "status": "limited",
+    "reason": "근거 범위가 제목 한 줄뿐(evidence_scope=title_only). 원문 literal match 로 표현 발견만 자동화",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "표현 발견은 그 연구가 해당 방법을 썼다는 뜻이 아님 (부정·비교 문맥 가능)",
+      "자동 미검출은 연구 부재·무관함·신규성이 아니라 needs_review",
+      "초록이 없어 연구내용 사실은 제목으로 확정 불가"
+    ]
+  },
+  "exploration_memo": {
+    "status": "available",
+    "reason": "자동 발견 표현과 사용자 검토를 분리해 Markdown/JSON 으로 내보냄",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "근거 번호는 이 메모 내부 번호이며 공식 과제번호가 아님",
+      "선택 0건도 정상 결과로 내보냄"
+    ]
+  },
+  "scoped_distribution": {
+    "status": "limited",
+    "reason": "dataset_snapshot / displayed_results / selected_records 세 범위의 기술통계만 허용",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "displayed_results 는 표시 수가 바뀌면 바뀜",
+      "selected_records 는 비교함이 바뀌면 바뀜",
+      "증가율·감소율·성장성 문구 금지 (v2 §12.2)",
+      "관측하지 않은 기간을 0건으로 채우지 않음"
+    ]
+  },
+  "calibrated_relevant_corpus": {
+    "status": "unverified",
+    "reason": "관련도 기준값(tau) 미확정 — 라벨 표본의 정밀도 곡선으로만 정한다 (D-019). 확정 전에는 '관련 과제 총 N건' 을 만들지 않는다",
+    "data_supports": false,
+    "implemented": true,
+    "limitations": [
+      "Top-K 독립성 시험은 이 범위에 계속 적용 (T-14)",
+      "표본이 순위 층화 표본이므로 정밀도 곡선은 무편향 추정치가 아님"
+    ]
+  }
+}

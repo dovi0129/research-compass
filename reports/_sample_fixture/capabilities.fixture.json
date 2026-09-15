@@ -1,0 +1,67 @@
+{
+  "project_search": {
+    "status": "verified",
+    "reason": "과제명 확보. 공백 과제명 0건. 길이 중앙값 16자, 최대 23자, 10자 미만 0건",
+    "scope": "검색 텍스트 = 정규화 과제명 (초록·분야코드 없음)",
+    "limitations": [
+      "제목 한 줄만으로 임베딩하므로 짧은 과제명의 변별력이 낮을 수 있음",
+      "공식 과제번호가 없어 '과제 수'가 아니라 '수록 레코드 수'로만 집계"
+    ]
+  },
+  "year_distribution": {
+    "status": "verified",
+    "reason": "선정년도 유효 55건, 범위 2019~2024, 파싱실패 6건",
+    "scope": "다운로드한 스냅샷 내 선정연도별 수록 레코드 분포",
+    "limitations": [
+      "국가 전체 연구지원 현황이 아님",
+      "계속과제 반복 수록 가능성이 있어 해당 연도의 신규 선정 건수로 해석 금지",
+      "미상 연도는 별도 표기하며 0 으로 채우지 않음"
+    ]
+  },
+  "field_search": {
+    "status": "verified",
+    "reason": "'과학기술표준명' 고유값 12개 / 공백 0건 / 전체 12행",
+    "scope": "입력 주제와 공개 분야명 간 의미 유사도",
+    "limitations": [
+      "개별 과제의 공식 분류를 뜻하지 않음"
+    ]
+  },
+  "field_counts": {
+    "status": "disabled",
+    "reason": "기준기간 충돌 미해결 — 컬럼명 연도 ['2025'] 와 등록 페이지 설명문 연도 ['2023'] 가 다릅니다. 확정 전에는 period_status=conflicting 으로 두고 분야 간 비교·순위화·후보 생성을 중단합니다. (명세 4.2, 7.2, 9.4)",
+    "evidence_refs": [
+      {
+        "column_years": [
+          "2025"
+        ],
+        "description_years": [
+          "2023"
+        ],
+        "description_raw": "2023년 연구분야별 선정과제 현황"
+      }
+    ],
+    "limitations": [
+      "원문 확인 영역에서 원본 컬럼명과 '기간 확인 필요' 표시만 허용",
+      "비교 차트·순위화 금지"
+    ]
+  },
+  "comparable_trend": {
+    "status": "disabled",
+    "reason": "D2 의 선정횟수 컬럼이 1개뿐이라 이 데이터만으로 시계열을 구성할 수 없음. 연도별 변화는 D1 의 선정년도 분포(year_distribution)로만 제시",
+    "evidence_refs": [
+      {
+        "columns": [
+          "2025년 선정횟수"
+        ]
+      }
+    ]
+  },
+  "project_field_join": {
+    "status": "disabled",
+    "reason": "D1 과 D2 사이에 공식 연결키가 없음. 분야명 임베딩의 최근접 코드를 과제의 공식 분야 코드로 저장하는 것을 금지 (명세 7.3)"
+  },
+  "opportunity_candidates": {
+    "status": "disabled",
+    "reason": "비교 가능한 검증된 선정 통계가 없어 후보를 생성하지 않음. UI 는 후보 대신 판단 보류 사유를 표시 (명세 9.4)"
+  }
+}

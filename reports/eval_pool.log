@@ -1,0 +1,18 @@
+﻿[모델] BAAI/bge-m3 — 가중치 포맷: pytorch_model.bin (캐시 재사용)
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 26354.68it/s]
+[모델] 로딩 완료 (2s), device=cpu
+[풀] 질의 5개 → 라벨 대상 41건 (질의당 평균 8.2건, 의미∪어휘 중복 제거)
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\evaluation\label_sheet_dev.csv   ← 엑셀로 열어 label 열에 2/1/0/U 입력
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\evaluation\pool_key_dev.csv     ← 채점용. 라벨링 중에는 열지 않음
+      짧은 제목이 풀에 포함된 건수: 1
+[모델] BAAI/bge-m3 — 가중치 포맷: pytorch_model.bin (캐시 재사용)
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 31150.36it/s]
+[모델] 로딩 완료 (2s), device=cpu
+[풀] 질의 10개 → 라벨 대상 88건 (질의당 평균 8.8건, 의미∪어휘 중복 제거)
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\evaluation\label_sheet_test.csv   ← 엑셀로 열어 label 열에 2/1/0/U 입력
+[출력] C:\학교\ECOAI\03_학회_발표_세미나\06_공공데이터\프로젝트 폴더\evaluation\pool_key_test.csv     ← 채점용. 라벨링 중에는 열지 않음
+      짧은 제목이 풀에 포함된 건수: 4

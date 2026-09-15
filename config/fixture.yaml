@@ -1,0 +1,95 @@
+schema_version: "1.0"
+
+paths:
+  raw: data/fixtures
+  processed: data/processed
+  artifacts: artifacts
+  reports: reports
+
+# 원본 데이터 등록 정보. 실제 확보 파일은 sources[].file 로 지정한다.
+sources:
+  - key: D1
+    dataset_id: "3049029"
+    title: 한국연구재단_이알앤디_과제정보
+    source_url: https://www.data.go.kr/data/3049029/fileData.do
+    file: D1_fixture.csv
+    registry_row_count: 11788      # 등록 페이지 표기값. 검증 대상이며 정답이 아님
+    registry_columns:
+      - 사업년도
+      - 선정년도
+      - 대사업명
+      - 중사업명
+      - 소사업명
+      - 세부사업명
+      - 과제명
+      - 연구책임자명
+      - 연구자번호
+      - 주관기관명
+      - 보안과제여부
+    registry_period_claim: null    # 등록 페이지 설명문에 명시된 대상기간 없음
+  - key: D2
+    dataset_id: "15120687"
+    title: 한국연구재단_선정과제 연구분야
+    source_url: https://www.data.go.kr/data/15120687/fileData.do
+    file: D2_fixture.csv
+    registry_row_count: 851
+    registry_columns:
+      - 과학기술표준명
+      - 중심분야코드
+      - 2025년 선정횟수
+    registry_period_claim: "2023년 연구분야별 선정과제 현황"   # 컬럼명(2025년)과 충돌
+
+audit:
+  encoding_candidates: [utf-8-sig, utf-8, cp949, euc-kr]
+  # 임베딩·화면·내보내기에서 항상 제외할 개인식별 성격 컬럼
+  pii_columns: [연구책임자명, 연구자번호]
+  # 보안과제 표시 컬럼과 제외 기준값
+  security_flag_column: 보안과제여부
+  security_exclude_values: ["Y", "y", "여", "예", "보안"]
+
+embedding:
+  model_id: BAAI/bge-m3
+  revision: null
+  device: cpu
+  batch_size: 8
+  max_tokens: 512
+  normalize: true
+  text_template: title_only_v1
+
+retrieval:
+  backend: faiss_flat_ip
+  default_top_k: 10
+  max_top_k: 50
+  project_relevance_threshold: null
+  field_relevance_threshold: null
+  threshold_evidence_path: null
+
+baseline:
+  kind: char_tfidf
+  ngram_min: 2
+  ngram_max: 5
+
+analytics:
+  default_mode: snapshot_distribution
+  enable_comparable_trend: false
+  enable_project_field_join: false
+  missing_year_policy: separate_unknown
+
+opportunity:
+  mode: gated_rules
+  relevance_pool_size: 20
+  min_comparison_fields: 5
+  low_count_quantile: 0.25
+  quantile_method: linear
+  max_candidates: 3
+  require_verified_period: true
+  require_verified_comparison_group: true
+
+llm:
+  enabled: false
+
+runtime:
+  mode: local_live
+  allow_network_during_search: false
+  persist_user_queries: false
+  bind_host: 127.0.0.1

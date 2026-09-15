@@ -1,0 +1,9 @@
+===== 2026-09-09T19:46:14+09:00 server/run.sh tau-probe =====
+> python -m research_compass.cli --config config/server.yaml make-tau-probe --split dev
+[모델] BAAI/bge-m3 — 가중치 포맷: pytorch_model.bin (캐시 재사용)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 46991.97it/s]
+[모델] 로딩 완료 (2s), device=cuda
+[tau 표본] 질의 5개 × (순위 [6, 7, 8, 9, 10, 15, 20, 30, 50, 100, 200, 500] + 무작위 3) = 75건
+[출력] /home/minu/공공데이터/research-compass/evaluation/label_sheet_tau_dev.csv   ← 라벨 대상 (블라인드)
+[출력] /home/minu/공공데이터/research-compass/evaluation/pool_key_tau_dev.csv     ← 채점용
+===== 완료 2026-09-09T19:46:23+09:00 =====
