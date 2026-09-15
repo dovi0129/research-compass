@@ -1,6 +1,6 @@
 # UX-L / UX-W 사용자 작업 비교 — 진행 대본
 
-> 근거: `research_compass_workspace_spec_v2.md` §17.6·§17.7 · 결정 D-028
+> 근거: `docs/research_compass_workspace_spec_v2.md` §17.6·§17.7 · 결정 D-028
 > 상태: **양식 준비 완료 · 미실시** (`README.md` 참조). 이 문서는 실시할 때 그대로 읽는 대본이다.
 
 ---

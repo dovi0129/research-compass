@@ -1,6 +1,6 @@
 # W5 — 사용자 작업 비교 (UX-L vs UX-W)
 
-> 근거: `research_compass_workspace_spec_v2.md` §17.6·§17.7 · 결정 D-028
+> 근거: `docs/research_compass_workspace_spec_v2.md` §17.6·§17.7 · 결정 D-028
 > 갱신: 2026-09-09
 
 ## 상태: 준비 완료 · **사용자 평가 미실시**

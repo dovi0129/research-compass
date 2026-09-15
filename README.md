@@ -48,7 +48,7 @@
 | `docs/user_guide.md` | **사용 설명서** — 화면 순서대로 따라 하는 사용법, 시연 대본, 발표에서 쓸 표현 |
 | `reports/feature_specification.md` | **현재 구현된 기능 명세** — 화면·엔진·제한의 기준 |
 | `reports/handoff.md` | 현재 상태·실제 실행 경로·실측값 |
-| `research_compass_workspace_spec_v2.md` | 최상위 명세(탐색 작업공간). 제품 범위를 정한다 |
+| `docs/research_compass_workspace_spec_v2.md` | 최상위 명세(탐색 작업공간). 제품 범위를 정한다 |
 | `docs/plan.md` · `docs/decisions.md` | 계획(W0~W6) · 판단 근거 D-001~D-038 |
 | `docs/implementation_spec.md` · `docs/spec_amendment_01_retrieval_v2.md` | 원본 명세 v1.0 · 검색 v2 개정안 |
 | `docs/run_server.md` | **화면 실행·중지 상세** |
@@ -62,7 +62,7 @@
 
 이미 이 폴더에서 `data/processed/` 와 `artifacts/` 가 만들어져 있다면 **4번만** 하면 된다.
 
-> **저장소를 막 클론했다면 둘 다 없다.** 원본 데이터·임베딩·모델 가중치는 저장소에 넣지 않는다(이유는 [개인정보·보안](#개인정보보안)). 1 → 2 → 3 → 4 를 차례로 하면 된다. 같은 내용을 짧게 정리한 것이 **`docs/handover.md` §3**.
+> **저장소를 막 클론했다면 둘 다 없다.** 원본 데이터·임베딩·모델 가중치는 저장소에 넣지 않는다(이유는 [개인정보·보안](#개인정보보안)). 1 → 2 → 3 → 4 를 차례로 하면 된다.
 
 ### 1. 설치
 

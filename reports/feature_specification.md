@@ -3,7 +3,7 @@
 - 기준일: **2026-09-14** (결정 D-036~D-038 반영)
 - 기준: 실제 코드(`app.py`, `src/research_compass/*`)와 실행 중인 화면. 문서에만 있고 코드에 없는 기능은 적지 않았다.
 - 검증: 자동 시험 **256개 통과**(`python -m pytest`). 화면은 AppTest(브라우저 없음)와 사용자 브라우저 확인.
-- 함께 볼 문서: 사용 설명서 `docs/user_guide.md` · 실행·중지 `docs/run_server.md` · 결정 기록 `docs/decisions.md`(D-001~D-038) · 인계 `reports/handoff.md` · 최상위 명세 `research_compass_workspace_spec_v2.md`
+- 함께 볼 문서: 사용 설명서 `docs/user_guide.md` · 실행·중지 `docs/run_server.md` · 결정 기록 `docs/decisions.md`(D-001~D-038) · 인계 `reports/handoff.md` · 최상위 명세 `docs/research_compass_workspace_spec_v2.md`
 - 이전 판(09-10)과 달라진 점은 맨 끝 **§11** 에 모아 두었다.
 
 ---

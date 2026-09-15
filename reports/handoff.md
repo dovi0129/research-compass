@@ -1,8 +1,11 @@
 # 인계 보고 (reports/handoff.md)
 
-> 작성: 2026-09-09 · 대상 명세: `research_compass_workspace_spec_v2.md` (v2.0)
+> 작성: 2026-09-09 · 대상 명세: `docs/research_compass_workspace_spec_v2.md` (v2.0)
 > 성격: v2 §0 "첫 산출물" 및 §19 **W0** 산출물 — 현재 상태와 v2 변경 대응표, 실제 실행 경로.
 > 원칙: 이 문서의 수치는 **이 저장소의 산출물을 직접 읽어 확인한 값**이다. 인계 보고의 수치를 그대로 옮기지 않았다.
+
+> **캡처 파일 안내** — 옛 설계 차수의 화면 캡처(`ui_*`·`ux_l*`·`ui2_*`~`ui5_*`, 65장 14.6MB)는 저장소에서 지웠다.
+> 커밋 `82ab1b6` 에 그대로 있다. 남긴 것은 `ui6_*`(9차)와 `theme_probe_*` 뿐이다 — `reports/screenshots/README.md`.
 
 ---
 
@@ -264,7 +267,7 @@ D-037: 첫 화면 `연구분야로 찾기` 의 기준연도 경고 삭제(툴팁
 첫 캡처에서 잡아 고친 것: 바닥글에 KISTEP 코드표 ID 2개가 함께 찍힘(D1·D2 만으로), 관점 라디오가 빈 칸으로 그려짐(폼 `input` CSS 가 라디오에 닿음),
 구성 패널이 열 바닥으로 밀림(sticky 래퍼 `height:100%`). Sonnet 디자인 리뷰 뒤: 첫 화면도 70/30(검색 상자 | **수록 데이터 구성** 막대), 760px 토글 한 줄,
 다크 기본 버튼 `#3D77C9`(폼 제출 버튼 testid `stBaseButton-primaryFormSubmit` 누락 발견·수정), 범위 주의문 어투 통일·`(D-012)` 노출 제거.
-캡처 `reports/screenshots/ui6_*.png`, 스크립트 `reports/ux_study/rc_ui6_shots.py`·`rc_ui6_recheck.py`.
+캡처 `reports/screenshots/ui6_*.png`, 스크립트 `rc_ui6_shots.py`·`rc_ui6_recheck.py` (이후 저장소에서 삭제, 커밋 `82ab1b6`).
 
 ### 3.6 8차 — 연구 작업공간 톤 · 비교 맥락 우선 · 메모 저장 경쟁 조건 (D-035, 2026-09-10, 실제 모델 · 헤드리스 Edge · 실제 마우스 이벤트)
 
@@ -401,7 +404,7 @@ v2 §19 순서. W4 는 W1~W3 과 병행 가능하다.
 
 | 문서 | 내용 |
 |---|---|
-| `research_compass_workspace_spec_v2.md` | 이번 대상 명세 (작업공간) |
+| `docs/research_compass_workspace_spec_v2.md` | 이번 대상 명세 (작업공간) |
 | `docs/implementation_spec.md` | 원본 명세 v1.0 — 데이터·출처·판단 보류의 기본 계약 |
 | `docs/spec_amendment_01_retrieval_v2.md` | 검색 v2 개정안 (하이브리드·상대점수·재정렬·tau) |
 | `docs/decisions.md` | D-001~D-022. 특히 D-013·D-016~D-022 |

@@ -1,6 +1,6 @@
 # 인수인계 — 어떤 도구이고 어떻게 띄우는가
 
-기능 요약과 실행 방법만 적었다.
+기능 요약과 실행에 필요한 것만 적었다.
 화면을 하나씩 따라 하는 사용법은 `docs/user_guide.md`, 기능의 정확한 범위와 제한은 `reports/feature_specification.md` 에 있다.
 
 ## 1. 무엇을 하는 도구인가
@@ -49,82 +49,34 @@
 
 ## 3. 실행
 
+설치 → 원본 데이터 받기 → 정제·인덱스 빌드 → 띄우기 순서는 **`README.md` 의 「빠른 시작」** 에 그대로 있다.
+여기에는 그 앞에 알아야 할 것만 적는다.
+
 ### 3.1 저장소에 없는 것
 
 소스코드와 문서만 올려 두었다. 아래 셋은 각자 준비해야 한다.
 
 | 없는 것 | 크기 | 어떻게 |
 |---|---|---|
-| 원본 데이터 `data/raw/` | 약 3.4 MB | 공공데이터포털에서 직접 받는다 (3.3) |
-| 임베딩 인덱스 `artifacts/*.npy` | 49 MB | `build-index` 로 만든다 (3.4) |
+| 원본 데이터 `data/raw/` | 약 3.4 MB | 공공데이터포털에서 직접 받는다 (README 빠른 시작 2) |
+| 임베딩 인덱스 `artifacts/*.npy` | 49 MB | `build-index` 로 만든다 (README 빠른 시작 3) |
 | 모델 가중치 | 4.3 GB | `build-index`·`prepare-reranker` 가 자동으로 받는다 |
 
 원본에 개인식별 컬럼(연구책임자명·연구자번호)이 있어 저장소에 넣지 않는다.
 
-### 3.2 설치
+### 3.2 미리 알아둘 것
 
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-pip install -e ".[search,ui,dev]"
-```
-
-Python 3.10 이상(개발은 3.12). 가상환경을 Google Drive·OneDrive 동기화 폴더 안에 두면 설치가 깨진다.
-
-확인: `python -m pytest` → **256개 통과**(streamlit 이 없으면 화면 시험은 skip).
-
-### 3.3 원본 데이터 받기
-
-공공데이터포털에서 **로그인 후 직접** 내려받아 `data/raw/` 에 그대로 넣는다. 파일명은 바꾸지 않아도 된다.
-
-| 키 | 데이터셋 | 페이지 |
-|---|---|---|
-| D1 (필수) | 한국연구재단_이알앤디_과제정보 | <https://www.data.go.kr/data/3049029/fileData.do> |
-| D2 (필수) | 한국연구재단_선정과제 연구분야 | <https://www.data.go.kr/data/15120687/fileData.do> |
-| K18 (분류체계 확인용) | KISTEP_과학기술표준분류정보 | <https://www.data.go.kr/data/15065876/fileData.do> |
-| K1 (분류체계 확인용) | KISTEP_과학기술표준분류 | <https://www.data.go.kr/data/15065871/fileData.do> |
-
-### 3.4 정제·인덱스 만들기
-
-```powershell
-python -m research_compass.cli doctor --quick
-python -m research_compass.cli prepare            # 정제 → data/processed/
-python -m research_compass.cli build-index        # 모델 약 2.3GB 다운로드 + 임베딩
-python -m research_compass.cli prepare-reranker   # 재정렬기 가중치 (필수)
-```
-
-Windows 라면 `run_build.bat` 을 더블클릭해도 된다(`prepare-reranker` 는 따로 돌려야 한다).
-
-개발 노트북 CPU 실측 **약 18분**(모델을 이미 받아 둔 상태 기준, `reports/build_index.log`).
-처음이면 다운로드 시간이 더 붙는다. **미리 해 둔다.**
-
-끝나면 `artifacts/index_manifest.json` 의 `run_mode` 가 `local_live` 인지 본다.
-`test_fixture` 면 합성 임베더로 만든 것이라 검색 품질이 나오지 않는다.
-
-### 3.5 띄우기
-
-```powershell
-.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1 --server.port 8765
-```
-
-브라우저에서 <http://127.0.0.1:8765> — 자동으로 열리지 않는다.
-
-중지는 `Ctrl+C`, 백그라운드로 띄웠다면 포트로 찾아 끈다.
-
-```powershell
-Get-NetTCPConnection -LocalPort 8765 -State Listen |
-  ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
-```
-
-### 3.6 미리 알아둘 것
-
+- **인덱스 빌드가 오래 걸린다** — 개발 노트북 CPU 실측 약 18분(모델을 이미 받아 둔 상태, `reports/build_index.log`).
+  처음이면 모델 2.3GB 다운로드가 더 붙는다. **미리 해 둔다.**
+- 빌드가 끝나면 `artifacts/index_manifest.json` 의 `run_mode` 가 `local_live` 인지 본다.
+  `test_fixture` 면 합성 임베더로 만든 것이라 검색 품질이 나오지 않는다.
 - **첫 접속이 23초 걸린다.** 모델과 인덱스를 그때 올린다. 이후 검색은 4~5초.
   누구한테 보여 주기 전에 **접속 1회 + 검색 1회**로 예열해 둔다.
 - **Git Bash 로 띄우지 마라.** 출력 인코딩 때문에 모델 적재가 실패하고 화면이 "준비 안 됨"으로 뜬다.
   꼭 써야 하면 앞에 `PYTHONUTF8=1` 을 붙인다.
 - 데이터나 인덱스가 없으면 화면이 검색을 막고 복구 명령을 보여 준다. 가짜 결과를 만들지 않는다.
 - 목록만 있는 비교 조건(UX-L)도 있다: `... run app.py --server.port 8781 -- --ux l`
-- 더 자세한 실행·중지·로그 읽는 법은 `docs/run_server.md`.
+- 중지·포트 변경·로그에서 무시해도 되는 것은 `docs/run_server.md`.
 
 ---
 
@@ -132,6 +84,7 @@ Get-NetTCPConnection -LocalPort 8765 -State Listen |
 
 | 문서 | 내용 |
 |---|---|
+| `README.md` | 소개와 **빠른 시작**(설치·데이터·빌드·실행의 정본) |
 | `docs/user_guide.md` | 화면을 순서대로 따라 하는 사용법 |
 | `reports/feature_specification.md` | 기능 명세 — 기능별 범위·제한·상태표 |
 | `reports/handoff.md` | 실측값(응답시간·검색 품질)과 측정 조건 |

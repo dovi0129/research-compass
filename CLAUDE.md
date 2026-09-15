@@ -5,7 +5,7 @@
 
 ## 먼저 읽을 것 (이 순서)
 1. `reports/handoff.md` — **현재 상태·v2 변경 대응표·실제 실행 경로** (가장 최신)
-2. `research_compass_workspace_spec_v2.md` — **최상위 명세** (탐색 작업공간). 제품 범위·작업 순서를 정한다
+2. `docs/research_compass_workspace_spec_v2.md` — **최상위 명세** (탐색 작업공간). 제품 범위·작업 순서를 정한다
 3. `docs/plan.md` — 현재 위치와 다음 작업 (v2 W0~W6)
 4. `docs/decisions.md` — D-001~D-022. 특히 D-013(분류체계 2018판), D-016~D-022
 5. `docs/implementation_spec.md` — 원본 명세 v1.0 (데이터·출처·판단 보류의 기본 계약)
@@ -127,9 +127,9 @@ python -m pytest            # 236개 (test_app.py 는 streamlit 없으면 skip)
 ```
 
 ## 함정 (겪은 것)
-- **헤드리스 Edge 캡처 금지 (사용자 지시 2026-09-14).** `reports/ux_study/rc_*_shots.py`·`rc_*_probe.py` 는 Edge 를 띄우는데 `proc.kill()` 이 부모만 죽여
-  렌더러·GPU 자식이 회차마다 남았고(임시 프로필 59개) 컴퓨터가 멈춰 재시작했다. 화면 검증은 **AppTest(`tests/unit/test_app.py`)** 로 한다. 실제 캡처가 꼭 필요하면
-  사용자에게 먼저 묻고, 한 번에 하나만, 종료는 `taskkill /PID <pid> /T /F`(스크립트는 그렇게 고쳐 둠). 끝난 뒤 `msedge` 프로세스와 `%TEMP%\rc_edge_*` 를 확인한다.
+- **헤드리스 Edge 캡처 금지 (사용자 지시 2026-09-14).** 캡처 스크립트가 Edge 를 띄우는데 `proc.kill()` 이 부모만 죽여 렌더러·GPU 자식이 회차마다 남았고
+  (임시 프로필 59개) 컴퓨터가 멈춰 재시작했다. **그래서 `reports/ux_study/rc_*.py` 6개는 저장소에서 지웠다**(커밋 `82ab1b6` 에 있다). 화면 검증은
+  **AppTest(`tests/unit/test_app.py`)** 로 한다. 실제 캡처가 꼭 필요하면 사용자에게 먼저 묻고, 한 번에 하나만, 종료는 `taskkill /PID <pid> /T /F` 로 한다.
 - `C:\학교` 는 Google Drive 동기화 폴더. Drive 가 켜져 있으면 새 파일에 하드링크가 걸려 원격 세션이 못 읽었음. `.venv` 는 Drive 밖(`C:\venvs\research-compass`)이 낫다.
 - Windows 11 스마트 앱 제어가 pyarrow parquet DLL 을 차단 → 정제 데이터는 **CSV** (`store.py`). parquet 쓰지 말 것.
 - HF 다운로드: `use_safetensors` 자동 판별(`embedding.py`) — 캐시에 `.bin` 만 있으면 그걸 쓴다. 두 포맷 중복 다운로드 금지.
@@ -149,7 +149,7 @@ python -m pytest            # 236개 (test_app.py 는 streamlit 없으면 skip)
 - Streamlit 1.63 테마: 런타임 `theme.base` 변경은 **안 통한다**. 토글은 같은 출처 `st.iframe` 에서 부모 컨텍스트로 `SET_CUSTOM_THEME_CONFIG`
   호스트 메시지를 보낸다(`client.allowedOrigins` 에 앱 출처 필요). `st.context.theme.type` 은 한 실행 늦게 바뀐다 — 그래서 **시스템 모드의 팔레트는
   파이썬에서 고르지 말고 CSS `@media (prefers-color-scheme: dark)` 로 덧씌운다**(`build_css(follow_os=True)`). 안 그러면 라이트→시스템 전환에서
-  우리 배경은 라이트, 위젯은 다크인 반쪽 화면이 한 번 나온다(D-036 추기 2). 토글 재현·측정은 `reports/ux_study/rc_theme_probe.py [--dark]`.
+  우리 배경은 라이트, 위젯은 다크인 반쪽 화면이 한 번 나온다(D-036 추기 2). 토글 확인은 `tests/unit/test_app.py` 의 테마 시험으로 한다(옛 `rc_theme_probe.py` 는 삭제, 커밋 `82ab1b6`).
 - 서버 로그의 `No module named 'torchvision'` 트레이스백 수백 줄은 Streamlit 파일 감시기가 transformers lazy 모듈을 건드린 **warning 잡음**이다(재실행 지연 없음).
   `config.toml` `[logger] level = "error"` 로 숨겼다. `WinError 10022` 도 접속 끊김 잡음. 진짜 오류는 `Traceback` 중 이 둘을 뺀 것만 본다. `st.components.v1.html` 은
   폐기 예고 → `st.iframe(html, height=1)`.
