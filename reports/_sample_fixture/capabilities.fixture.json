@@ -63,5 +63,68 @@
   "opportunity_candidates": {
     "status": "disabled",
     "reason": "비교 가능한 검증된 선정 통계가 없어 후보를 생성하지 않음. UI 는 후보 대신 판단 보류 사유를 표시 (명세 9.4)"
+  },
+  "perspective_search": {
+    "status": "available",
+    "reason": "사용자가 확정한 탐색 요소로 검색문을 구성해 관점당 1회 실행. 관점 이름은 탐색 의도의 표식이며 반환 과제가 그 의도를 충족한다는 판정이 아님",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "관점별 결과를 자동 통합(RRF·점수 평균)하지 않음",
+      "서로 다른 질의의 원시 점수를 같은 축에서 비교하지 않음"
+    ]
+  },
+  "comparison_workspace": {
+    "status": "available",
+    "reason": "선택 과제를 (source_snapshot_id, record_id) 로 중복 없이 보관하고 검색 출처 이력을 남김",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "여러 검색의 점수를 하나의 대표 관련도로 합치지 않음",
+      "기본 순서는 사용자 선택 순서"
+    ]
+  },
+  "title_evidence_review": {
+    "status": "limited",
+    "reason": "근거 범위가 제목 한 줄뿐(evidence_scope=title_only). 원문 literal match 로 표현 발견만 자동화",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "표현 발견은 그 연구가 해당 방법을 썼다는 뜻이 아님 (부정·비교 문맥 가능)",
+      "자동 미검출은 연구 부재·무관함·신규성이 아니라 needs_review",
+      "초록이 없어 연구내용 사실은 제목으로 확정 불가"
+    ]
+  },
+  "exploration_memo": {
+    "status": "available",
+    "reason": "자동 발견 표현과 사용자 검토를 분리해 Markdown/JSON 으로 내보냄",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "근거 번호는 이 메모 내부 번호이며 공식 과제번호가 아님",
+      "선택 0건도 정상 결과로 내보냄"
+    ]
+  },
+  "scoped_distribution": {
+    "status": "limited",
+    "reason": "dataset_snapshot / displayed_results / selected_records 세 범위의 기술통계만 허용",
+    "data_supports": true,
+    "implemented": true,
+    "limitations": [
+      "displayed_results 는 표시 수가 바뀌면 바뀜",
+      "selected_records 는 비교함이 바뀌면 바뀜",
+      "증가율·감소율·성장성 문구 금지 (v2 §12.2)",
+      "관측하지 않은 기간을 0건으로 채우지 않음"
+    ]
+  },
+  "calibrated_relevant_corpus": {
+    "status": "unverified",
+    "reason": "관련도 기준값(tau) 미확정 — 라벨 표본의 정밀도 곡선으로만 정한다 (D-019). 확정 전에는 '관련 과제 총 N건' 을 만들지 않는다",
+    "data_supports": false,
+    "implemented": true,
+    "limitations": [
+      "Top-K 독립성 시험은 이 범위에 계속 적용 (T-14)",
+      "표본이 순위 층화 표본이므로 정밀도 곡선은 무편향 추정치가 아님"
+    ]
   }
 }
